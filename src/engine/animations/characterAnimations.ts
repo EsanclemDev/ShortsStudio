@@ -1,3 +1,4 @@
+import { getWorkoutState, type WorkoutConfig } from "./workout";
 import type { CharacterProps } from "../characters/Character";
 import {
   solveArmIK,
@@ -13,7 +14,12 @@ export type CharacterAction =
   | "point"
   | "drink"
   | "talk"
-  | "surprised";
+  | "surprised"
+  | "bicepsCurl"
+  | "bicepsCurlFatigue"
+  | "exhausted"
+  | "flex"
+  | "celebrate";
 
 export type CharacterPose = CharacterProps & {
   offsetY: number;
@@ -23,7 +29,8 @@ export type CharacterPose = CharacterProps & {
 
 export const getCharacterPose = (
   action: CharacterAction,
-  time: number
+  time: number,
+  workout?: WorkoutConfig
 ): CharacterPose => {
   const pose: CharacterPose = {
     expression: "happy",
@@ -50,6 +57,36 @@ export const getCharacterPose = (
   };
 
   switch (action) {
+    case "bicepsCurl":
+    case "bicepsCurlFatigue": {
+      const fatigue = action === "bicepsCurlFatigue";
+      const period = fatigue ? 2.8 : 1.8;
+      const state = workout ? getWorkoutState(time, { ...workout, period: workout.period ?? period }) : undefined;
+      const lift = state?.lift ?? (1 - Math.cos(2 * Math.PI * time / period)) / 2;
+      const redness = state?.fatigue ?? (fatigue ? Math.min(1, time / 5) : 0);
+      const tremor = state?.failed ? Math.sin(time * 35) * 13 * state.struggle : 0;
+      return {
+        ...pose,
+        dumbbells: true,
+        fatigue: redness,
+        expression: state?.success ? "happy" : state?.done ? "tired" : state?.failed ? "effort" : lift > 0.45 ? "effort" : fatigue ? "tired" : "neutral",
+        leftArm: -8 - (state?.struggle ?? 0)*12,
+        rightArm: 8 + (state?.struggle ?? 0)*12,
+        leftElbow: -125 * lift + tremor,
+        rightElbow: 125 * lift - tremor,
+        headTilt: state?.failed ? -12 * state.struggle + Math.sin(time*25)*3*state.struggle : state?.done && !state.success ? 12*redness : fatigue ? Math.sin(time * 8) * lift * 3 : 0,
+        rotation: state?.failed ? Math.sin(time*19)*3*state.struggle : state?.done && !state.success ? 8*redness : 0,
+        leftKnee: state?.failed ? 14*state.struggle : 0,
+        rightKnee: state?.failed ? 14*state.struggle : 0,
+        offsetY: state?.failed ? 14*state.struggle : state?.done && !state.success ? 10*redness : 0,
+      };
+    }
+    case "exhausted":
+      return { ...pose, expression: "tired", fatigue: Math.max(0, 1-time/3), leftArm: -8, rightArm: 8, headTilt: 8, dumbbells: true };
+    case "flex":
+      return { ...pose, leftArm: 105, rightArm: -105, leftElbow: 70, rightElbow: -70, mouthOpen: 1 };
+    case "celebrate":
+      return { ...pose, leftArm: 135, rightArm: -135, leftHand: "open", rightHand: "open", offsetY: -Math.abs(Math.sin(time * 6)) * 25, mouthOpen: 1 };
     case "walk": {
       const cycle = Math.sin(time * 9);
 

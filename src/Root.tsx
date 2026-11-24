@@ -20,9 +20,118 @@ import {
 } from "./videos/audio-demo/AudioDemo";
 import { FPS } from "./videos/bridge/story";
 
+import {
+  CreatineVideo,
+  CREATINE_DURATION,
+} from "./videos/productions/002-creatine/CreatineVideo";
+import {
+  VisualDemo,
+  VISUAL_DEMO_FRAMES,
+} from "./videos/visual-demo/VisualDemo";
+import {
+  GymDemo ,
+} from "./videos/gym-demo/GymDemo";
+import {
+  ParticlesDemo,
+  PARTICLES_DEMO_FRAMES,
+} from "./videos/particles-demo/ParticlesDemo";
+import {
+  AnatomyDemo,
+  ANATOMY_DEMO_FRAMES,
+} from "./videos/anatomy-demo/AnatomyDemo";
+import {
+  LiquidsDemo,
+  LIQUIDS_DEMO_FRAMES,
+} from "./videos/liquids-demo/LiquidsDemo";
+import {
+  MicroscopicDemo,
+  MICROSCOPIC_DEMO_FRAMES,
+} from "./videos/microscopic-demo/MicroscopicDemo";
+import {
+  EffectsDemo,
+  EFFECTS_DEMO_FRAMES,
+} from "./videos/effects-demo/EffectsDemo";
+import {
+  RunningHeartVideo,
+} from "./videos/productions/001-running-heart/RunningHeartVideo";
+
+import {
+  RUNNING_HEART_FRAMES,
+} from "./videos/productions/001-running-heart/scenes";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+    <Composition
+  id="002-Creatine"
+  component={CreatineVideo}
+  durationInFrames={CREATINE_DURATION}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="RunningHeartVideo"
+  component={RunningHeartVideo}
+  durationInFrames={RUNNING_HEART_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="EffectsDemo"
+  component={EffectsDemo}
+  durationInFrames={EFFECTS_DEMO_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="MicroscopicDemo"
+  component={MicroscopicDemo}
+  durationInFrames={MICROSCOPIC_DEMO_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="AnatomyDemo"
+  component={AnatomyDemo}
+  durationInFrames={ANATOMY_DEMO_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="LiquidsDemo"
+  component={LiquidsDemo}
+  durationInFrames={LIQUIDS_DEMO_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="ParticlesDemo"
+  component={ParticlesDemo}
+  durationInFrames={PARTICLES_DEMO_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/><Composition
+  id="GymDemo"
+  component={GymDemo}
+  durationInFrames={1080}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
+    <Composition
+  id="VisualDemo"
+  component={VisualDemo}
+  durationInFrames={VISUAL_DEMO_FRAMES}
+  fps={30}
+  width={1080}
+  height={1920}
+/>
       <Composition
         id="Scene"
         component={Scene}

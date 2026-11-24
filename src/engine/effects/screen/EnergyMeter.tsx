@@ -1,0 +1,2 @@
+import React from "react";
+export const EnergyMeter: React.FC<{value:number;label?:string;color?:string}> = ({value,label="ENERGÍA",color="#22c55e"}) => <div style={{flex:1,color,fontFamily:"Arial",fontSize:28,fontWeight:700}}>{label}<div style={{height:20,background:"#334155",borderRadius:12,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.max(0,Math.min(100,value))}%`,background:color}}/></div></div>;

@@ -2,22 +2,23 @@ import React from "react";
 
 import {
   AbsoluteFill,
-  interpolate,
   useCurrentFrame,
-  Easing,
+  interpolate,
 } from "remotion";
 
 import type {
   TransitionConfig,
 } from "./TransitionTypes";
 
-type Props = {
+interface TransitionEngineProps {
   config?: TransitionConfig;
   startFrame: number;
   children: React.ReactNode;
-};
+}
 
-export const TransitionEngine: React.FC<Props> = ({
+export const TransitionEngine: React.FC<
+  TransitionEngineProps
+> = ({
   config,
   startFrame,
   children,
@@ -28,54 +29,71 @@ export const TransitionEngine: React.FC<Props> = ({
 
   const duration = Math.max(
     1,
-    config?.durationInFrames ?? 12,
+    config?.durationInFrames ?? 18,
   );
 
-  const localFrame = frame - startFrame;
-
   const progress = interpolate(
-    localFrame,
+    frame - startFrame,
     [0, duration],
     [0, 1],
     {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
-      easing: Easing.out(Easing.cubic),
     },
   );
 
-  let transform = "none";
-  let opacity = 1;
+  const eased =
+    progress * progress * (3 - 2 * progress);
 
-  let overlayOpacity = 0;
-  let overlayColor = "transparent";
+  const style: React.CSSProperties = {
+    overflow: "hidden",
+  };
 
-  let clipPath: string | undefined;
+  let overlay: React.ReactNode = null;
 
   switch (type) {
     case "fade":
-      overlayColor = config?.color ?? "#000000";
-      overlayOpacity = 1 - progress;
+      style.opacity = 0.35 + eased * 0.65;
       break;
 
     case "flash":
-      overlayColor = config?.color ?? "#ffffff";
-      overlayOpacity = (1 - progress) * 0.85;
+      overlay = (
+        <AbsoluteFill
+          style={{
+            backgroundColor:
+              config?.color ?? "#ffffff",
+            opacity:
+              Math.pow(1 - eased, 3) * 0.65,
+            pointerEvents: "none",
+          }}
+        />
+      );
       break;
 
-    case "zoom":
-      transform = `scale(${1.25 - progress * 0.25})`;
-      break;
+    case "zoom": {
+      const scale = 1.06 - eased * 0.06;
 
-    case "slide":
-      transform = `translateX(${(1 - progress) * 100}%)`;
-      opacity = progress;
+      style.transform = `scale(${scale})`;
+      style.opacity = 0.8 + eased * 0.2;
       break;
+    }
+
+    case "slide": {
+      const offset = (1 - eased) * 45;
+
+      style.transform =
+        `translateX(${offset}px)`;
+
+      style.opacity = 0.5 + eased * 0.5;
+      break;
+    }
 
     case "wipe":
-      clipPath = `inset(0 ${(1 - progress) * 100}% 0 0)`;
+      style.clipPath =
+        `inset(0 ${(1 - eased) * 100}% 0 0)`;
       break;
 
+    case "none":
     default:
       break;
   }
@@ -86,26 +104,11 @@ export const TransitionEngine: React.FC<Props> = ({
         overflow: "hidden",
       }}
     >
-      <AbsoluteFill
-        style={{
-          transform,
-          opacity,
-          clipPath,
-          transformOrigin: "center center",
-        }}
-      >
+      <AbsoluteFill style={style}>
         {children}
       </AbsoluteFill>
 
-      {overlayOpacity > 0 && (
-        <AbsoluteFill
-          style={{
-            backgroundColor: overlayColor,
-            opacity: overlayOpacity,
-            pointerEvents: "none",
-          }}
-        />
-      )}
+      {overlay}
     </AbsoluteFill>
   );
 };

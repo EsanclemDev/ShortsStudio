@@ -10,6 +10,10 @@ import type {
   TransitionConfig,
 } from "../transitions/TransitionTypes";
 
+import type {
+  EnvironmentPreset,
+} from "../environments/EnvironmentTypes";
+
 export type Position3D = [number, number, number];
 
 export type SceneConfig = {
@@ -20,6 +24,7 @@ export type SceneConfig = {
   camera: CameraMode;
   size?: number;
   transition?: TransitionConfig;
+  environment?: EnvironmentPreset;
 };
 
 export const getTotalFrames = (

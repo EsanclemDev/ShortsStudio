@@ -1,3 +1,4 @@
+import type { WorkoutConfig } from "../animations/workout";
 import React, {
   useMemo,
   useLayoutEffect,
@@ -18,7 +19,7 @@ import {
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-import { Character } from "./Character";
+import { Character, type CharacterAppearance } from "./Character";
 
 import {
   getCharacterPose,
@@ -27,20 +28,28 @@ import {
 
 type Character3DProps = {
   action?: CharacterAction;
+  workout?: WorkoutConfig;
   position?: [number, number, number];
   size?: number;
   startFrame?: number;
   billboard?: boolean;
   mouthOpen?: number;
+  appearance?: CharacterAppearance;
+  animationSpeed?: number;
+  animationOffset?: number;
 };
 
 export const Character3D: React.FC<Character3DProps> = ({
   action = "idle",
+  workout,
   position = [0, 0, 0],
   size = 4,
   startFrame = 0,
   billboard = true,
-  mouthOpen = 1
+  mouthOpen = 1,
+  appearance,
+  animationSpeed = 1,
+  animationOffset = 0
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -48,14 +57,14 @@ export const Character3D: React.FC<Character3DProps> = ({
 
   const groupRef = useRef<THREE.Group>(null);
 
-  const time = Math.max(0, frame - startFrame) / fps;
+  const time = Math.max(0, Math.max(0, frame - startFrame) / fps * animationSpeed + animationOffset);
 
   const {
     offsetY,
     rotation,
     scale,
     ...characterProps
-  } = getCharacterPose(action, time);
+  } = getCharacterPose(action, time, workout);
 
   const textureWidth = 1008;
   const textureHeight = 1320;
@@ -90,6 +99,7 @@ export const Character3D: React.FC<Character3DProps> = ({
       <g>
         <Character
   {...characterProps}
+  appearance={appearance}
   mouthOpen={
     mouthOpen ?? characterProps.mouthOpen
   }
