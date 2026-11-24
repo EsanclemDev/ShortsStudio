@@ -2,20 +2,15 @@ import { Composition, staticFile } from "remotion";
 import { Scene, myCompSchema } from "./Scene";
 import { getMediaMetadata } from "./helpers/get-media-metadata";
 
-// Welcome to the Remotion Three Starter Kit!
-// Two compositions have been created, showing how to use
-// the `ThreeCanvas` component and the `useVideoTexture` hook.
-
-// You can play around with the example or delete everything inside the canvas.
-
-// Remotion Docs:
-// https://remotion.dev/docs
-
-// @remotion/three Docs:
-// https://remotion.dev/docs/three
-
-// React Three Fiber Docs:
-// https://docs.pmnd.rs/react-three-fiber/getting-started/introduction
+import {
+  BridgeShort,
+  BRIDGE_FRAMES,
+} from "./videos/bridge/Bridge";
+import {
+  CharacterDemo,
+  CHARACTER_DEMO_FRAMES,
+} from "./videos/character-demo/CharacterDemo";
+import { FPS } from "./videos/bridge/story";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -41,7 +36,8 @@ export const RemotionRoot: React.FC = () => {
               ? staticFile("phone.mp4")
               : staticFile("tablet.mp4");
 
-          const mediaMetadata = await getMediaMetadata(videoSrc);
+          const mediaMetadata =
+            await getMediaMetadata(videoSrc);
 
           return {
             props: {
@@ -51,6 +47,22 @@ export const RemotionRoot: React.FC = () => {
             },
           };
         }}
+      />
+<Composition
+  id="CharacterDemo"
+  component={CharacterDemo}
+  fps={30}
+  durationInFrames={CHARACTER_DEMO_FRAMES}
+  width={1080}
+  height={1920}
+/>
+      <Composition
+        id="BridgeShort"
+        component={BridgeShort}
+        fps={FPS}
+        durationInFrames={BRIDGE_FRAMES}
+        width={1080}
+        height={1920}
       />
     </>
   );
