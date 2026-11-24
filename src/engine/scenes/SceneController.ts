@@ -6,6 +6,10 @@ import type {
   CameraMode,
 } from "../camera/CinematicCamera";
 
+import type {
+  TransitionConfig,
+} from "../transitions/TransitionTypes";
+
 export type Position3D = [number, number, number];
 
 export type SceneConfig = {
@@ -15,6 +19,7 @@ export type SceneConfig = {
   to: Position3D;
   camera: CameraMode;
   size?: number;
+  transition?: TransitionConfig;
 };
 
 export const getTotalFrames = (

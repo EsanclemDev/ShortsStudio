@@ -31,6 +31,7 @@ type Character3DProps = {
   size?: number;
   startFrame?: number;
   billboard?: boolean;
+  mouthOpen?: number;
 };
 
 export const Character3D: React.FC<Character3DProps> = ({
@@ -39,6 +40,7 @@ export const Character3D: React.FC<Character3DProps> = ({
   size = 4,
   startFrame = 0,
   billboard = true,
+  mouthOpen = 1
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -86,7 +88,12 @@ export const Character3D: React.FC<Character3DProps> = ({
       viewBox="-120 -50 840 1100"
     >
       <g>
-        <Character {...characterProps} />
+        <Character
+  {...characterProps}
+  mouthOpen={
+    mouthOpen ?? characterProps.mouthOpen
+  }
+/>
       </g>
     </svg>,
   );

@@ -49,7 +49,7 @@ rightElbow = 0,
 leftKnee = 0,
 rightKnee = 0,
 heldObject = "none",
-mouthOpen = 0,
+mouthOpen = 1,
 objectRotation = 0,
 objectOffsetX = -5,
 objectOffsetY = -30,
@@ -293,8 +293,11 @@ bottleOpen = false,
         {/* Boca */}
 {expression === "happy" && (
   <g
-    transform={`translate(0 ${290 * (1 - (1 + mouthOpen * 0.2))})
-      scale(1 ${1 + mouthOpen * 0.2})`}
+    transform={`
+  translate(0 290)
+  scale(1 ${0.12 + mouthOpen * 0.88})
+  translate(0 -290)
+`}
   >
     <path
       d="M 215 260 Q 300 295 385 245
