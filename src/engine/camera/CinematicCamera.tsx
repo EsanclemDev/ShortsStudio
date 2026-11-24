@@ -1,10 +1,9 @@
 import React, { useLayoutEffect } from "react";
 import { useThree } from "@react-three/fiber";
-
 import {
-  interpolate,
   useCurrentFrame,
   useVideoConfig,
+  interpolate,
 } from "remotion";
 
 export type CameraMode =
@@ -15,16 +14,21 @@ export type CameraMode =
   | "pan"
   | "follow"
   | "closeUp"
-  | "wide";
+  | "wide"
+  | "slowZoom"
+  | "slowOrbit"
+  | "slowZoomOut";
 
-type Props = {
+interface CinematicCameraProps {
   mode?: CameraMode;
   startFrame?: number;
   duration?: number;
   target?: [number, number, number];
-};
+}
 
-export const CinematicCamera: React.FC<Props> = ({
+export const CinematicCamera: React.FC<
+  CinematicCameraProps
+> = ({
   mode = "static",
   startFrame = 0,
   duration = 3,
@@ -32,6 +36,7 @@ export const CinematicCamera: React.FC<Props> = ({
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+
   const { camera, invalidate } = useThree();
 
   const progress = interpolate(
@@ -44,65 +49,81 @@ export const CinematicCamera: React.FC<Props> = ({
     },
   );
 
-  const smooth =
+  const eased =
     progress * progress * (3 - 2 * progress);
 
   const [tx, ty, tz] = target;
 
-  useLayoutEffect(() => {
-    let x = tx;
-    let y = ty + 2.8;
-    let z = tz + 8;
+  let x = tx;
+  let y = ty + 2.8;
+  let z = tz + 8;
 
-    let lookX = tx;
-    let lookY = ty + 1.7;
-    let lookZ = tz;
+  let lookX = tx;
+  let lookY = ty + 1.7;
+  let lookZ = tz;
 
-    switch (mode) {
-      case "static":
-        break;
+  switch (mode) {
+    case "zoomIn":
+      z = tz + 8 - eased * 2.5;
+      break;
 
-      case "zoomIn":
-        z = tz + 8 - smooth * 2.5;
-        break;
+    case "zoomOut":
+      z = tz + 5.5 + eased * 2.5;
+      break;
 
-      case "zoomOut":
-        z = tz + 5.5 + smooth * 2.5;
-        break;
+    case "orbit": {
+      const angle = -0.55 + eased * 1.1;
 
-      case "orbit": {
-        const angle = -0.55 + smooth * 1.1;
-
-        x = tx + Math.sin(angle) * 8;
-        z = tz + Math.cos(angle) * 8;
-
-        break;
-      }
-
-      case "pan":
-        x = tx - 2.5 + smooth * 5;
-        break;
-
-      case "follow":
-        x = tx;
-        y = ty + 2.8;
-        z = tz + 9.5;
-        break;
-
-      case "closeUp":
-        x = tx;
-        y = ty + 2.7;
-        z = tz + 4;
-
-        lookY = ty + 2.6;
-        break;
-
-      case "wide":
-        y = ty + 4;
-        z = tz + 13;
-        break;
+      x = tx + Math.sin(angle) * 8;
+      z = tz + Math.cos(angle) * 8;
+      break;
     }
 
+    case "pan":
+      x = tx - 2.5 + eased * 5;
+      break;
+
+    case "follow":
+      z = tz + 9.5;
+      break;
+
+    case "closeUp":
+      y = ty + 2.7;
+      z = tz + 4;
+      lookY = ty + 2.6;
+      break;
+
+    case "wide":
+      y = ty + 4;
+      z = tz + 13;
+      break;
+
+    // New cinematic camera modes
+
+    case "slowZoom":
+      z = tz + 8.4 - eased * 0.6;
+      break;
+
+    case "slowZoomOut":
+      z = tz + 7.8 + eased * 0.6;
+      break;
+
+    case "slowOrbit": {
+      const angle = -0.12 + eased * 0.24;
+
+      x = tx + Math.sin(angle) * 8.3;
+      z = tz + Math.cos(angle) * 8.3;
+
+      y = ty + 2.8 + eased * 0.08;
+      break;
+    }
+
+    case "static":
+    default:
+      break;
+  }
+
+  useLayoutEffect(() => {
     camera.position.set(x, y, z);
 
     camera.lookAt(
@@ -116,12 +137,13 @@ export const CinematicCamera: React.FC<Props> = ({
     invalidate();
   }, [
     camera,
-    mode,
-    smooth,
-    tx,
-    ty,
-    tz,
     invalidate,
+    x,
+    y,
+    z,
+    lookX,
+    lookY,
+    lookZ,
   ]);
 
   return null;
