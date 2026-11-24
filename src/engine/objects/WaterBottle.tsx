@@ -1,4 +1,8 @@
-export const WaterBottle = () => {
+export const WaterBottle = ({
+  open = false,
+}: {
+  open?: boolean;
+}) => {
   const shape = `
     M -15 -75
     L 15 -75
@@ -62,23 +66,31 @@ export const WaterBottle = () => {
       </text>
 
       {/* Tapón */}
-      <rect
-        x={-19}
-        y={-88}
-        width={38}
-        height={18}
-        rx={4}
-        fill="#1464ff"
-        stroke="#111111"
-        strokeWidth={5}
-      />
+{!open && (
+  <rect
+    x={-19}
+    y={-88}
+    width={38}
+    height={18}
+    rx={4}
+    fill="#1464ff"
+    stroke="#111111"
+    strokeWidth={5}
+  />
+)}
 
-      <path
-        d="M -22 -35 L -22 -8"
-        stroke="white"
-        strokeWidth={6}
-        opacity={0.8}
-      />
+{/* Boquilla abierta */}
+{open && (
+  <ellipse
+    cx={0}
+    cy={-75}
+    rx={15}
+    ry={4}
+    fill="#073c59"
+    stroke="#111111"
+    strokeWidth={4}
+  />
+)}
     </g>
   );
 };

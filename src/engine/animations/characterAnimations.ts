@@ -1,5 +1,8 @@
 import type { CharacterProps } from "../characters/Character";
-
+import {
+  solveArmIK,
+  rotatePoint,
+} from "./inverseKinematics";
 export type CharacterAction =
   | "idle"
   | "walk"
@@ -125,19 +128,124 @@ export const getCharacterPose = (
         rightHand: "point",
       };
 
-    case "drink": {
-      const progress = Math.min(1, time / 0.8);
-      const lift = progress * progress * (3 - 2 * progress);
+case "drink": {
+  const clamp = (value: number) =>
+    Math.max(0, Math.min(1, value));
 
-      return {
-        ...pose,
-        heldObject: "waterBottle",
-        rightArm: -120 * lift,
-        rightElbow: -75 * lift,
-        headTilt: -8 * lift,
-        expression: "neutral",
-      };
-    }
+  const smoothstep = (value: number) => {
+    const t = clamp(value);
+
+    return t * t * (3 - 2 * t);
+  };
+
+  const lerp = (
+    from: number,
+    to: number,
+    progress: number,
+  ) => from + (to - from) * progress;
+
+  // Levantar, beber y bajar.
+  const lift = smoothstep(time / 0.8);
+
+  const lower = smoothstep(
+    (time - 2.2) / 0.8,
+  );
+
+  const amount = lift * (1 - lower);
+
+  const sip =
+    smoothstep((time - 0.8) / 0.4) *
+    (1 - smoothstep((time - 1.9) / 0.3));
+
+  const headTilt = -8 * sip;
+
+  // Inclinación independiente de la botella.
+  const bottleRotation =
+    -90 * amount - 18 * sip;
+
+  const bottleOffset = {
+    x: -5,
+    y: -15,
+  };
+
+  // Coordenadas de la boca respecto
+  // al punto de rotación de la cabeza.
+  const rotatedMouth = rotatePoint(
+    {
+      x: 320 - 300,
+      y: 285 - 340,
+    },
+    headTilt,
+  );
+
+  const mouth = {
+    x: 300 + rotatedMouth.x,
+    y: 340 + rotatedMouth.y,
+  };
+
+  // Posición de la boquilla dentro
+  // de la botella abierta.
+  const nozzle = rotatePoint(
+    {
+      x: 0,
+      y: -75,
+    },
+    bottleRotation,
+  );
+
+  // Posición necesaria de la mano
+  // para que la boquilla toque la boca.
+  const drinkingHand = {
+    x: mouth.x - nozzle.x - bottleOffset.x,
+    y: mouth.y - nozzle.y - bottleOffset.y,
+  };
+
+  // Posición de reposo de la mano.
+  const restingHand = {
+    x: 455,
+    y: 540,
+  };
+
+  const handTarget = {
+    x: lerp(
+      restingHand.x,
+      drinkingHand.x,
+      amount,
+    ),
+    y: lerp(
+      restingHand.y,
+      drinkingHand.y,
+      amount,
+    ),
+  };
+
+  const angles = solveArmIK(
+    { x: 420, y: 390 },
+    handTarget,
+    { x: 65, y: 80 },
+    { x: -30, y: 70 },
+    -1,
+  );
+
+  return {
+    ...pose,
+
+    heldObject: "waterBottle",
+
+    rightArm: angles.armAngle,
+    rightElbow: angles.elbowAngle,
+
+    objectRotation: bottleRotation,
+    objectOffsetX: bottleOffset.x,
+    objectOffsetY: bottleOffset.y,
+
+    bottleOpen: true,
+
+    headTilt,
+
+    expression: "neutral",
+  };
+}
 
     case "talk":
       return {

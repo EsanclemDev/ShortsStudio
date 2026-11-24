@@ -28,6 +28,10 @@ leftKnee?: number;
 rightKnee?: number;
 heldObject?: "none" | "waterBottle";
 mouthOpen?: number;
+objectRotation?: number;
+objectOffsetX?: number;
+objectOffsetY?: number;
+bottleOpen?: boolean;
 };
 
 export const Character: React.FC<CharacterProps> = ({
@@ -46,6 +50,10 @@ leftKnee = 0,
 rightKnee = 0,
 heldObject = "none",
 mouthOpen = 0,
+objectRotation = 0,
+objectOffsetX = -5,
+objectOffsetY = -30,
+bottleOpen = false,
 }) => {
   const ink = "#111111";
   const skin = "#ffba80";
@@ -97,9 +105,10 @@ mouthOpen = 0,
 
   return (
     <svg
+  xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 600 1000"
-  width="100%"
-  height="100%"
+  width={600}
+  height={1000}
   style={{ overflow: "visible" }}
 >
       <defs>
@@ -389,14 +398,16 @@ mouthOpen = 0,
             rotate(${-armAngle - elbowAngle})`}
         >
           {/* Objeto sujeto */}
-          {side === 1 && heldObject === "waterBottle" && (
-            <g
-              transform={`translate(-5 -30)
-                rotate(${elbowAngle * 0.65})`}
-            >
-              <WaterBottle />
-            </g>
-          )}
+{side === 1 && heldObject === "waterBottle" && (
+  <g
+    transform={`translate(
+      ${objectOffsetX}
+      ${objectOffsetY}
+    ) rotate(${objectRotation})`}
+  >
+    <WaterBottle open={bottleOpen} />
+  </g>
+)}
 
           <g transform={`scale(${side} 1)`}>
             <Hand gesture={gesture} />
