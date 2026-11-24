@@ -14,6 +14,10 @@ import {
   WorldDemo,
   WORLD_DEMO_FRAMES,
 } from "./videos/world-demo/WorldDemo";
+import {
+  AudioDemo,
+  AUDIO_DEMO_FRAMES,
+} from "./videos/audio-demo/AudioDemo";
 import { FPS } from "./videos/bridge/story";
 
 export const RemotionRoot: React.FC = () => {
@@ -57,6 +61,14 @@ export const RemotionRoot: React.FC = () => {
   component={CharacterDemo}
   fps={30}
   durationInFrames={CHARACTER_DEMO_FRAMES}
+  width={1080}
+  height={1920}
+/>
+<Composition
+  id="AudioDemo"
+  component={AudioDemo}
+  durationInFrames={AUDIO_DEMO_FRAMES}
+  fps={30}
   width={1080}
   height={1920}
 />

@@ -6,3 +6,7 @@ dist
 .claude
 # Ignore the output video from Git but not videos you import into src/.
 out
+# Python
+.venv/
+__pycache__/
+*.pyc
