@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "multimedia-demo",
+  "title": "Multimedia demo",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "duration": 8.26,
+  "scenes": [
+    {
+      "id": "gym",
+      "start": 0,
+      "end": 3.9,
+      "environment": "gym",
+      "camera": {
+        "mode": "static"
+      },
+      "entities": [
+        {
+          "id": "red",
+          "type": "character",
+          "speak": true,
+          "props": {
+            "position": [
+              -1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "action": "talk",
+            "appearance": {
+              "shirtColor": "#ef4444"
+            }
+          }
+        },
+        {
+          "id": "green",
+          "type": "character",
+          "props": {
+            "position": [
+              1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "action": "idle",
+            "mouthOpen": 0,
+            "appearance": {
+              "shirtColor": "#22c55e"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "supplement",
+      "start": 3.9,
+      "end": 8.26,
+      "environment": "studio",
+      "camera": {
+        "mode": "slowZoom"
+      },
+      "entities": [
+        {
+          "id": "jar",
+          "type": "object",
+          "props": {
+            "type": "creatineJar",
+            "position": [
+              0,
+              1.3,
+              0
+            ],
+            "scale": 1.7,
+            "animation": "rotate"
+          }
+        },
+        {
+          "id": "left",
+          "type": "energyMeter",
+          "group": "comparison",
+          "layout": {
+            "bottom": 520
+          },
+          "props": {
+            "value": 50,
+            "label": "SIN CREATINA",
+            "color": "#ef4444"
+          }
+        },
+        {
+          "id": "right",
+          "type": "energyMeter",
+          "group": "comparison",
+          "props": {
+            "value": 80,
+            "label": "CON CREATINA"
+          }
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "voice": {
+      "src": "audio/voice/creatine.mp3",
+      "durationInFrames": 248
+    },
+    "music": {
+      "src": "audio/music/curiosity.wav",
+      "volume": 0.08,
+      "loop": true,
+      "fadeOut": 15
+    },
+    "effects": [
+      {
+        "src": "audio/sfx/whoosh.wav",
+        "startFrame": 117,
+        "volume": 0.25
+      }
+    ]
+  },
+  "subtitles": {
+    "src": "audio/director/creatine-captions.json",
+    "bottom": 265,
+    "fontSize": 72
+  },
+  "lipsync": "audio/director/creatine-lipsync.json"
+}

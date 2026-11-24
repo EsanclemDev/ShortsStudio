@@ -1,0 +1,1379 @@
+
+
+========== src/engine/scenes/SceneController.ts ==========
+import type {
+  CharacterAction,
+} from "../animations/characterAnimations";
+
+import type {
+  CameraMode,
+} from "../camera/CinematicCamera";
+
+import type {
+  TransitionConfig,
+} from "../transitions/TransitionTypes";
+
+import type {
+  EnvironmentPreset,
+} from "../environments/EnvironmentTypes";
+
+export type Position3D = [number, number, number];
+
+export type SceneConfig = {
+  action: CharacterAction;
+  duration: number;
+  from: Position3D;
+  to: Position3D;
+  camera: CameraMode;
+  size?: number;
+  transition?: TransitionConfig;
+  environment?: EnvironmentPreset;
+};
+
+export const getTotalFrames = (
+  scenes: SceneConfig[],
+  fps: number,
+): number => {
+  return scenes.reduce(
+    (total, scene) =>
+      total + Math.max(1, Math.round(scene.duration * fps)),
+    0,
+  );
+};
+
+export const getSceneState = (
+  scenes: SceneConfig[],
+  frame: number,
+  fps: number,
+) => {
+  if (scenes.length === 0) {
+    throw new Error("At least one scene is required");
+  }
+
+  let startFrame = 0;
+
+  for (let index = 0; index < scenes.length; index++) {
+    const scene = scenes[index];
+
+    const durationFrames = Math.max(
+      1,
+      Math.round(scene.duration * fps),
+    );
+
+    const endFrame = startFrame + durationFrames;
+
+    if (
+      frame < endFrame ||
+      index === scenes.length - 1
+    ) {
+      const localFrame = Math.max(
+        0,
+        frame - startFrame,
+      );
+
+      const progress = Math.min(
+        1,
+        localFrame / Math.max(1, durationFrames - 1),
+      );
+
+      const position = scene.from.map(
+        (value, axis) =>
+          value +
+          (scene.to[axis] - value) * progress,
+      ) as Position3D;
+
+      return {
+        scene,
+        index,
+        startFrame,
+        localFrame,
+        progress,
+        position,
+      };
+    }
+
+    startFrame = endFrame;
+  }
+
+  throw new Error("Unable to resolve scene");
+};
+
+========== src/engine/characters/Character3D.tsx ==========
+import type { WorkoutConfig } from "../animations/workout";
+import React, {
+  useMemo,
+  useLayoutEffect,
+  useRef,
+  useEffect,
+} from "react";
+
+import { renderToStaticMarkup } from "react-dom/server";
+
+import {
+  useCurrentFrame,
+  useVideoConfig,
+  delayRender,
+  continueRender,
+  cancelRender,
+} from "remotion";
+
+import { useThree } from "@react-three/fiber";
+import * as THREE from "three";
+
+import { Character, type CharacterAppearance } from "./Character";
+
+import {
+  getCharacterPose,
+  type CharacterAction,
+} from "../animations/characterAnimations";
+
+type Character3DProps = {
+  action?: CharacterAction;
+  workout?: WorkoutConfig;
+  position?: [number, number, number];
+  size?: number;
+  startFrame?: number;
+  billboard?: boolean;
+  mouthOpen?: number;
+  appearance?: CharacterAppearance;
+  animationSpeed?: number;
+  animationOffset?: number;
+};
+
+export const Character3D: React.FC<Character3DProps> = ({
+  action = "idle",
+  workout,
+  position = [0, 0, 0],
+  size = 4,
+  startFrame = 0,
+  billboard = true,
+  mouthOpen = 1,
+  appearance,
+  animationSpeed = 1,
+  animationOffset = 0
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { camera, invalidate } = useThree();
+
+  const groupRef = useRef<THREE.Group>(null);
+
+  const time = Math.max(0, Math.max(0, frame - startFrame) / fps * animationSpeed + animationOffset);
+
+  const {
+    offsetY,
+    rotation,
+    scale,
+    ...characterProps
+  } = getCharacterPose(action, time, workout);
+
+  const textureWidth = 1008;
+  const textureHeight = 1320;
+
+  const canvas = useMemo(() => {
+    const element = document.createElement("canvas");
+
+    element.width = textureWidth;
+    element.height = textureHeight;
+
+    return element;
+  }, []);
+
+  const texture = useMemo(() => {
+    const result = new THREE.CanvasTexture(canvas);
+
+    result.colorSpace = THREE.SRGBColorSpace;
+    result.minFilter = THREE.LinearFilter;
+    result.magFilter = THREE.LinearFilter;
+    result.generateMipmaps = false;
+
+    return result;
+  }, [canvas]);
+
+  const svg = renderToStaticMarkup(
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={textureWidth}
+      height={textureHeight}
+      viewBox="-120 -50 840 1100"
+    >
+      <g>
+        <Character
+  {...characterProps}
+  appearance={appearance}
+  mouthOpen={
+    mouthOpen ?? characterProps.mouthOpen
+  }
+/>
+      </g>
+    </svg>,
+  );
+
+  useLayoutEffect(() => {
+    const handle = delayRender("Updating character texture");
+
+    const image = new Image();
+
+    let finished = false;
+
+    const finish = () => {
+      if (!finished) {
+        finished = true;
+        continueRender(handle);
+      }
+    };
+
+    image.onload = () => {
+      const context = canvas.getContext("2d");
+
+      if (!context) {
+        finish();
+        cancelRender(
+          new Error("Unable to create character canvas"),
+        );
+        return;
+      }
+
+      context.clearRect(
+        0,
+        0,
+        textureWidth,
+        textureHeight,
+      );
+
+      context.drawImage(
+        image,
+        0,
+        0,
+        textureWidth,
+        textureHeight,
+      );
+
+      texture.needsUpdate = true;
+
+      invalidate();
+
+      finish();
+    };
+
+    image.onerror = () => {
+      finish();
+
+      cancelRender(
+        new Error("Unable to load character SVG"),
+      );
+    };
+
+    image.src =
+      "data:image/svg+xml;charset=utf-8," +
+      encodeURIComponent(svg);
+
+    return () => {
+      image.onload = null;
+      image.onerror = null;
+
+      finish();
+    };
+  }, [svg, canvas, texture, invalidate]);
+
+  useLayoutEffect(() => {
+    if (!groupRef.current) {
+      return;
+    }
+
+    if (billboard) {
+      groupRef.current.rotation.y = Math.atan2(
+        camera.position.x - position[0],
+        camera.position.z - position[2],
+      );
+    }
+
+    invalidate();
+  });
+
+  useEffect(() => {
+    return () => {
+      texture.dispose();
+    };
+  }, [texture]);
+
+  const planeWidth =
+    size * (textureWidth / textureHeight);
+
+  return (
+    <group
+      ref={groupRef}
+      position={position}
+    >
+      <mesh
+        position={[
+          0,
+          size * 0.5 - 0.45 - offsetY * 0.004,
+          0,
+        ]}
+        rotation={[
+          0,
+          0,
+          -THREE.MathUtils.degToRad(rotation),
+        ]}
+        scale={[scale, scale, 1]}
+        castShadow={false}
+      >
+        <planeGeometry args={[planeWidth, size]} />
+
+        <meshBasicMaterial
+          map={texture}
+          transparent
+          alphaTest={0.1}
+          side={THREE.DoubleSide}
+          depthWrite={false}
+          toneMapped={false}
+        />
+
+        <meshDepthMaterial
+          attach="customDepthMaterial"
+          map={texture}
+          alphaTest={0.5}
+          depthPacking={THREE.RGBADepthPacking}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+    </group>
+  );
+};
+
+========== src/engine/animations/workout.ts ==========
+export type WorkoutConfig = { reps: number; period?: number; fail?: boolean };
+const clamp = (x: number) => Math.max(0, Math.min(1, x));
+const ease = (x: number) => { const t = clamp(x); return t*t*(3-2*t); };
+export const getWorkoutState = (time: number, config: WorkoutConfig) => {
+  const reps = Math.max(1, Math.floor(config.reps));
+  const period = Math.max(0.1, config.period ?? 1.8);
+  const t = Math.max(0, time);
+  const end = reps * period;
+  const failureDuration = period * 1.7;
+  const finish = end + (config.fail === false ? 0 : failureDuration);
+  const count = Math.min(reps, Math.floor(t / period + 1e-9));
+  const failed = config.fail !== false && t >= end && t < finish;
+  const done = t >= finish;
+  const phase = clamp((t-end)/failureDuration);
+  const struggle = failed ? ease(phase/.24)*(1-ease((phase-.65)/.25)) : 0;
+  const lift = done ? 0 : failed ? .53*struggle : (1-Math.cos(2*Math.PI*(t%period)/period))/2;
+  const fatigue = done ? (config.fail === false ? .28 : 1)*(1-ease((t-finish)/4)) : failed ? 1 : .8*ease((t/end-.55)/.45)*(config.fail === false ? .35 : 1);
+  return {count,lift,fatigue,failed,done,struggle,phase,success:done && config.fail === false};
+};
+
+
+========== src/engine/camera/CinematicCamera.tsx ==========
+import React, { useLayoutEffect } from "react";
+import { useThree } from "@react-three/fiber";
+import {
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+} from "remotion";
+
+export type CameraMode =
+  | "static"
+  | "zoomIn"
+  | "zoomOut"
+  | "orbit"
+  | "pan"
+  | "follow"
+  | "closeUp"
+  | "wide"
+  | "slowZoom"
+  | "slowOrbit"
+  | "slowZoomOut";
+
+interface CinematicCameraProps {
+  mode?: CameraMode;
+  startFrame?: number;
+  duration?: number;
+  target?: [number, number, number];
+}
+
+export const CinematicCamera: React.FC<
+  CinematicCameraProps
+> = ({
+  mode = "static",
+  startFrame = 0,
+  duration = 3,
+  target = [0, 0, 0],
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const { camera, invalidate } = useThree();
+
+  const progress = interpolate(
+    frame - startFrame,
+    [0, Math.max(1, duration * fps - 1)],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
+
+  const eased =
+    progress * progress * (3 - 2 * progress);
+
+  const [tx, ty, tz] = target;
+
+  let x = tx;
+  let y = ty + 2.8;
+  let z = tz + 8;
+
+  let lookX = tx;
+  let lookY = ty + 1.7;
+  let lookZ = tz;
+
+  switch (mode) {
+    case "zoomIn":
+      z = tz + 8 - eased * 2.5;
+      break;
+
+    case "zoomOut":
+      z = tz + 5.5 + eased * 2.5;
+      break;
+
+    case "orbit": {
+      const angle = -0.55 + eased * 1.1;
+
+      x = tx + Math.sin(angle) * 8;
+      z = tz + Math.cos(angle) * 8;
+      break;
+    }
+
+    case "pan":
+      x = tx - 2.5 + eased * 5;
+      break;
+
+    case "follow":
+      z = tz + 9.5;
+      break;
+
+    case "closeUp":
+      y = ty + 2.7;
+      z = tz + 4;
+      lookY = ty + 2.6;
+      break;
+
+    case "wide":
+      y = ty + 4;
+      z = tz + 13;
+      break;
+
+    // New cinematic camera modes
+
+    case "slowZoom":
+      z = tz + 8.4 - eased * 0.6;
+      break;
+
+    case "slowZoomOut":
+      z = tz + 7.8 + eased * 0.6;
+      break;
+
+    case "slowOrbit": {
+      const angle = -0.12 + eased * 0.24;
+
+      x = tx + Math.sin(angle) * 8.3;
+      z = tz + Math.cos(angle) * 8.3;
+
+      y = ty + 2.8 + eased * 0.08;
+      break;
+    }
+
+    case "static":
+    default:
+      break;
+  }
+
+  useLayoutEffect(() => {
+    camera.position.set(x, y, z);
+
+    camera.lookAt(
+      lookX,
+      lookY,
+      lookZ,
+    );
+
+    camera.updateMatrixWorld();
+
+    invalidate();
+  }, [
+    camera,
+    invalidate,
+    x,
+    y,
+    z,
+    lookX,
+    lookY,
+    lookZ,
+  ]);
+
+  return null;
+};
+
+========== src/engine/microscopic/MuscleEnergyScene.tsx ==========
+import React from "react";
+import { useCurrentFrame,useVideoConfig,interpolate } from "remotion";
+import { MuscleFiber3D } from "./models/MuscleFiber3D";
+import { ATP3D } from "./models/ATP3D";
+import { ADP3D } from "./models/ADP3D";
+import { Phosphocreatine3D } from "./models/Phosphocreatine3D";
+import { MicroMaterial } from "./MicroMaterial";
+export const MuscleEnergyScene: React.FC = () => {
+ const f=useCurrentFrame(); const {fps}=useVideoConfig(); const t=f/fps;
+ const p=interpolate(t,[5,6.5],[0,1],{extrapolateLeft:"clamp",extrapolateRight:"clamp"});
+ const activity=t<3?Math.pow(Math.sin(t*Math.PI),2):0;
+ return <>
+ {[0,1,2].map(i=><group key={i} position={[0,2.9+i*.48,-.5]}><MuscleFiber3D activity={activity}/></group>)}
+ <group position={[-.25,1.65,0]}>{t<3||t>=6.5?<ATP3D activity={.5}/>:<ADP3D/>}</group>
+ {t>=3&&t<5&&<mesh position={[1.1,1.65-(t-3)*.3,0]}><sphereGeometry args={[.2,16,12]}/><MicroMaterial color="#fbbf24"/></mesh>}
+ {t>=4&&<group position={[-.25,.65,0]}>{t<5?<Phosphocreatine3D/>:<mesh position={[-.55,0,0]}><sphereGeometry args={[.32,20,16]}/><MicroMaterial color="#a78bfa"/></mesh>}</group>}
+ {t>=5&&t<6.5&&<mesh position={[-.25+.96*p,.65+p,0]}><sphereGeometry args={[.2,16,12]}/><MicroMaterial color="#fbbf24" activity={1}/></mesh>}
+ </>;
+};
+
+
+========== src/engine/microscopic/OsmosisScene.tsx ==========
+import React, { useMemo } from "react";
+
+import {
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
+
+import { MicroObject } from "./MicroObject";
+
+import { ParticleSystem } from "../particles/ParticleSystem";
+import { createRandom } from "../particles/ParticleRandom";
+
+export type OsmosisMode =
+  | "isotonic"
+  | "hypotonic"
+  | "hypertonic";
+
+type Props = {
+  mode?: OsmosisMode;
+  position?: [number, number, number];
+  scale?: number;
+  duration?: number;
+  startFrame?: number;
+};
+
+export const OsmosisScene: React.FC<Props> = ({
+  mode = "isotonic",
+  position = [0, 1.7, 0],
+  scale = 1,
+  duration = 4,
+  startFrame = 0,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const time =
+    Math.max(0, frame - startFrame) / fps;
+
+  const directions = useMemo(() => {
+    const random = createRandom(128);
+
+    return Array.from({ length: 18 }, () => {
+      const angle = random() * Math.PI * 2;
+      const z = random() * 2 - 1;
+      const radius = Math.sqrt(1 - z * z);
+
+      return {
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+        z,
+        phase: random(),
+      };
+    });
+  }, []);
+
+  const sodiumCount =
+    mode === "hypotonic"
+      ? 12
+      : mode === "hypertonic"
+        ? 70
+        : 35;
+
+  const animation =
+    mode === "hypotonic"
+      ? "swelling"
+      : mode === "hypertonic"
+        ? "shrink"
+        : "pulse";
+
+  if (frame < startFrame) {
+    return null;
+  }
+
+  return (
+    <group position={position} scale={scale}>
+      <MicroObject
+        type="cell"
+        animation={animation}
+        duration={duration}
+        intensity={0.7}
+        startFrame={startFrame}
+      />
+
+      {/* Extracellular solutes */}
+      <ParticleSystem
+        type="sodium"
+        motion="float"
+        count={sodiumCount}
+        position={[0, 0, 0]}
+        spread={[4, 4, 4]}
+        size={0.055}
+        speed={0.3}
+        startFrame={startFrame}
+      />
+
+      {/* Water transport */}
+      {directions.map((direction, index) => {
+        const progress =
+          (time * 0.45 + direction.phase) % 1;
+
+        const inward =
+          mode === "hypotonic" ||
+          (mode === "isotonic" && index % 2 === 0);
+
+        const radius = inward
+          ? 2.2 - progress * 1.7
+          : 0.5 + progress * 1.7;
+
+        return (
+          <MicroObject
+            key={index}
+            type="waterMolecule"
+            position={[
+              direction.x * radius,
+              direction.y * radius,
+              direction.z * radius,
+            ]}
+            scale={0.12}
+            animation="rotate"
+            speed={0.5}
+            startFrame={startFrame}
+          />
+        );
+      })}
+    </group>
+  );
+};
+
+========== src/engine/effects/screen/RepCounter.tsx ==========
+import React from "react";
+import {useCurrentFrame,useVideoConfig} from "remotion";
+import {getWorkoutState,type WorkoutConfig} from "../../animations/workout";
+export const RepCounter: React.FC<{workout: WorkoutConfig; startFrame?: number; animationSpeed?: number; animationOffset?: number; color?: string; label?: string}> = ({workout,startFrame=0,animationSpeed=1,animationOffset=0,color="#22c55e",label="REPS"}) => {
+ const frame=useCurrentFrame(); const {fps}=useVideoConfig();
+ const state=getWorkoutState(Math.max(0,Math.max(0,frame-startFrame)/fps*animationSpeed+animationOffset),workout);
+ return <div style={{background:"#071421",border:`2px solid ${color}`,borderRadius:18,padding:16,color,fontFamily:"Arial",textAlign:"center",flex:1}}><div style={{fontSize:32,fontWeight:700}}>{label}</div><div style={{fontSize:64,fontWeight:900}}>{state.count}</div><div style={{fontSize:24,fontWeight:state.failed?900:500,color:state.failed?"#ff5252":state.success?"#4ade80":color}}>{state.failed?"¡FALLO MUSCULAR!":state.success?"¡COMPLETADO!":state.done?"AL LÍMITE":"REPETICIONES"}</div></div>;
+};
+
+
+========== src/engine/effects/screen/EnergyMeter.tsx ==========
+import React from "react";
+export const EnergyMeter: React.FC<{value:number;label?:string;color?:string}> = ({value,label="ENERGÍA",color="#22c55e"}) => <div style={{flex:1,color,fontFamily:"Arial",fontSize:28,fontWeight:700}}>{label}<div style={{height:20,background:"#334155",borderRadius:12,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.max(0,Math.min(100,value))}%`,background:color}}/></div></div>;
+
+
+========== src/engine/effects/screen/CharacterComparison.tsx ==========
+import React from "react";
+export const CharacterComparison: React.FC<{left:React.ReactNode;right:React.ReactNode;bottom?:number}> = ({left,right,bottom=220}) => <div style={{position:"absolute",bottom,left:70,right:70,display:"flex",gap:30}}>{left}{right}</div>;
+
+
+========== src/engine/effects/screen/ProgressComparison.tsx ==========
+import React from "react";
+import {EnergyMeter} from "./EnergyMeter";
+export const ProgressComparison: React.FC<{left:number;right:number;week:number}> = ({left,right,week}) => <div style={{position:"absolute",bottom:220,left:70,right:70,padding:24,background:"#071421",borderRadius:20,color:"white",fontFamily:"Arial",fontSize:32}}>SEMANA {week} · EJEMPLO ILUSTRATIVO<EnergyMeter value={left} label="SIN CREATINA" color="#ef4444"/><EnergyMeter value={right} label="CON CREATINA"/></div>;
+
+
+========== src/engine/audio/AudioEngine.tsx ==========
+import React from "react";
+import {
+  Sequence,
+  staticFile,
+  useVideoConfig,
+  interpolate,
+} from "remotion";
+
+import { Audio } from "@remotion/media";
+
+import type {
+  AudioConfig,
+  AudioTrack,
+} from "./AudioTypes";
+
+type TrackProps = {
+  track: AudioTrack;
+  defaultVolume: number;
+};
+
+const AudioLayer: React.FC<TrackProps> = ({
+  track,
+  defaultVolume,
+}) => {
+  const { durationInFrames: videoDuration } =
+    useVideoConfig();
+
+  const startFrame = track.startFrame ?? 0;
+
+  const duration = Math.min(
+    track.durationInFrames ?? videoDuration,
+    videoDuration - startFrame,
+  );
+
+  const baseVolume = track.volume ?? defaultVolume;
+
+  const fadeIn = track.fadeIn ?? 0;
+  const fadeOut = track.fadeOut ?? 0;
+
+  if (duration <= 0) {
+    return null;
+  }
+
+  return (
+    <Sequence
+      from={startFrame}
+      durationInFrames={duration}
+      layout="none"
+    >
+      <Audio
+        src={staticFile(track.src)}
+        loop={track.loop ?? false}
+        volume={(frame) => {
+          const entrance =
+            fadeIn > 0
+              ? interpolate(
+                  frame,
+                  [0, fadeIn],
+                  [0, 1],
+                  {
+                    extrapolateLeft: "clamp",
+                    extrapolateRight: "clamp",
+                  },
+                )
+              : 1;
+
+          const exit =
+            fadeOut > 0
+              ? interpolate(
+                  frame,
+                  [duration - fadeOut, duration],
+                  [1, 0],
+                  {
+                    extrapolateLeft: "clamp",
+                    extrapolateRight: "clamp",
+                  },
+                )
+              : 1;
+
+          return baseVolume * entrance * exit;
+        }}
+      />
+    </Sequence>
+  );
+};
+
+type Props = {
+  config: AudioConfig;
+};
+
+export const AudioEngine: React.FC<Props> = ({
+  config,
+}) => {
+  return (
+    <>
+      {config.voice && (
+        <AudioLayer
+          track={config.voice}
+          defaultVolume={1}
+        />
+      )}
+
+      {config.music && (
+        <AudioLayer
+          track={config.music}
+          defaultVolume={0.08}
+        />
+      )}
+
+      {config.effects?.map((effect, index) => (
+        <AudioLayer
+          key={`${effect.src}-${index}`}
+          track={effect}
+          defaultVolume={0.35}
+        />
+      ))}
+    </>
+  );
+};
+
+========== src/engine/subtitles/SubtitleEngine.tsx ==========
+import React, { useMemo } from "react";
+
+import {
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+} from "remotion";
+
+import type {
+  SubtitleConfig,
+} from "./SubtitleTypes";
+
+import {
+  createSubtitleGroups,
+  getActiveSubtitleGroup,
+  getActiveWord,
+} from "./SubtitleParser";
+
+import {
+  subtitleContainer,
+  subtitleText,
+} from "./SubtitleStyles";
+
+type Props = {
+  config: SubtitleConfig;
+};
+
+export const SubtitleEngine: React.FC<Props> = ({
+  config,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const timeMs = (frame / fps) * 1000;
+
+  const {
+    words,
+    style = "highlight",
+    wordsPerGroup = 3,
+    fontSize = 78,
+    color = "#ffffff",
+    activeColor = "#ffe600",
+    bottom = 350,
+    uppercase = true,
+  } = config;
+
+  const groups = useMemo(
+    () => createSubtitleGroups(words, wordsPerGroup),
+    [words, wordsPerGroup],
+  );
+
+  const group = getActiveSubtitleGroup(
+    groups,
+    timeMs,
+  );
+
+  if (!group) {
+    return null;
+  }
+
+  const activeIndex = getActiveWord(
+    group.words,
+    timeMs,
+  );
+
+  const activeWord = group.words[activeIndex];
+
+  const formatWord = (word: string) =>
+    uppercase ? word.toUpperCase() : word;
+
+  const popScale = activeWord
+    ? interpolate(
+        timeMs - activeWord.startMs,
+        [0, 70, 150],
+        [0.85, 1.12, 1],
+        {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        },
+      )
+    : 1;
+
+  if (style === "pop") {
+    if (!activeWord) {
+      return null;
+    }
+
+    return (
+      <div
+        style={{
+          ...subtitleContainer,
+          bottom,
+        }}
+      >
+        <div
+          style={{
+            ...subtitleText,
+            fontSize: fontSize * 1.15,
+            color: "#111111",
+            backgroundColor: activeColor,
+            padding: "12px 26px",
+            borderRadius: 18,
+            textShadow: "none",
+            WebkitTextStroke: "0px",
+            transform: `scale(${popScale})`,
+          }}
+        >
+          {formatWord(activeWord.text)}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        ...subtitleContainer,
+        bottom,
+      }}
+    >
+      <div
+        style={{
+          ...subtitleText,
+          fontSize,
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 18,
+        }}
+      >
+        {group.words.map((word, index) => {
+          const isActive = index === activeIndex;
+          const hasPlayed = timeMs >= word.startMs;
+
+          let wordColor = color;
+
+          if (style === "highlight" && isActive) {
+            wordColor = activeColor;
+          }
+
+          if (style === "karaoke" && hasPlayed) {
+            wordColor = activeColor;
+          }
+
+          return (
+            <span
+              key={`${word.startMs}-${index}`}
+              style={{
+                color: wordColor,
+                display: "inline-block",
+                transform: isActive
+                  ? `scale(${popScale})`
+                  : "scale(1)",
+              }}
+            >
+              {formatWord(word.text)}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+========== src/engine/transitions/TransitionEngine.tsx ==========
+import React from "react";
+
+import {
+  AbsoluteFill,
+  useCurrentFrame,
+  interpolate,
+} from "remotion";
+
+import type {
+  TransitionConfig,
+} from "./TransitionTypes";
+
+interface TransitionEngineProps {
+  config?: TransitionConfig;
+  startFrame: number;
+  children: React.ReactNode;
+}
+
+export const TransitionEngine: React.FC<
+  TransitionEngineProps
+> = ({
+  config,
+  startFrame,
+  children,
+}) => {
+  const frame = useCurrentFrame();
+
+  const type = config?.type ?? "none";
+
+  const duration = Math.max(
+    1,
+    config?.durationInFrames ?? 18,
+  );
+
+  const progress = interpolate(
+    frame - startFrame,
+    [0, duration],
+    [0, 1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
+
+  const eased =
+    progress * progress * (3 - 2 * progress);
+
+  const style: React.CSSProperties = {
+    overflow: "hidden",
+  };
+
+  let overlay: React.ReactNode = null;
+
+  switch (type) {
+    case "fade":
+      style.opacity = 0.35 + eased * 0.65;
+      break;
+
+    case "flash":
+      overlay = (
+        <AbsoluteFill
+          style={{
+            backgroundColor:
+              config?.color ?? "#ffffff",
+            opacity:
+              Math.pow(1 - eased, 3) * 0.65,
+            pointerEvents: "none",
+          }}
+        />
+      );
+      break;
+
+    case "zoom": {
+      const scale = 1.06 - eased * 0.06;
+
+      style.transform = `scale(${scale})`;
+      style.opacity = 0.8 + eased * 0.2;
+      break;
+    }
+
+    case "slide": {
+      const offset = (1 - eased) * 45;
+
+      style.transform =
+        `translateX(${offset}px)`;
+
+      style.opacity = 0.5 + eased * 0.5;
+      break;
+    }
+
+    case "wipe":
+      style.clipPath =
+        `inset(0 ${(1 - eased) * 100}% 0 0)`;
+      break;
+
+    case "none":
+    default:
+      break;
+  }
+
+  return (
+    <AbsoluteFill
+      style={{
+        overflow: "hidden",
+      }}
+    >
+      <AbsoluteFill style={style}>
+        {children}
+      </AbsoluteFill>
+
+      {overlay}
+    </AbsoluteFill>
+  );
+};
+
+========== src/engine/anatomy/AnatomyTypes.ts ==========
+export type OrganType =
+  | "brain"
+  | "heart"
+  | "lungs"
+  | "stomach"
+  | "kidneys"
+  | "intestines";
+
+export type OrganAnimation =
+  | "static"
+  | "float"
+  | "rotate"
+  | "heartbeat"
+  | "breathing"
+  | "swelling"
+  | "contract"
+  | "appear"
+  | "warning";
+
+export type OrganModelProps = {
+  color?: string;
+  activity?: number;
+};
+
+export type AnatomyConfig = {
+  type: OrganType;
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: number;
+  animation?: OrganAnimation;
+  speed?: number;
+  intensity?: number;
+  duration?: number;
+  color?: string;
+  startFrame?: number;
+};
+
+========== src/engine/audio/AudioTypes.ts ==========
+export type AudioTrack = {
+  src: string;
+  volume?: number;
+  startFrame?: number;
+  durationInFrames?: number;
+  fadeIn?: number;
+  fadeOut?: number;
+  loop?: boolean;
+};
+
+export type AudioConfig = {
+  voice?: AudioTrack;
+  music?: AudioTrack;
+  effects?: AudioTrack[];
+};
+
+========== src/engine/effects/EffectTypes.ts ==========
+export type EffectPosition = [
+  number,
+  number,
+  number,
+];
+
+export type BaseEffectConfig = {
+  color?: string;
+  intensity?: number;
+  speed?: number;
+  startFrame?: number;
+  duration?: number;
+};
+
+export type GlowConfig = BaseEffectConfig & {
+  position?: EffectPosition;
+  radius?: number;
+};
+
+export type ShockwaveConfig = BaseEffectConfig & {
+  position?: EffectPosition;
+  radius?: number;
+  count?: number;
+};
+
+export type ArrowConfig = BaseEffectConfig & {
+  from: EffectPosition;
+  to: EffectPosition;
+  thickness?: number;
+  animated?: boolean;
+};
+
+export type LabelConfig = BaseEffectConfig & {
+  text: string;
+  position: EffectPosition;
+  target: EffectPosition;
+  fontSize?: number;
+};
+
+export type ScreenEffectConfig = BaseEffectConfig & {
+  type: "flash" | "vignette" | "danger" | "focus";
+};
+
+export type MeterConfig = {
+  label?: string;
+  from?: number;
+  to?: number;
+  duration?: number;
+  startFrame?: number;
+  color?: string;
+  bottom?: number;
+  suffix?: string;
+};
+
+========== src/engine/environments/EnvironmentTypes.ts ==========
+export type EnvironmentPreset =
+  | "studio"
+  | "medical"
+  | "microscopic"
+  | "danger"
+  | "healthy"
+  | "dark"
+  | "gym";
+
+export type EnvironmentConfig = {
+  background: string;
+  horizon: string;
+  floor: string;
+
+  gridPrimary: string;
+  gridSecondary: string;
+  showGrid: boolean;
+
+  fogNear: number;
+  fogFar: number;
+
+  ambientColor: string;
+  ambientIntensity: number;
+
+  keyColor: string;
+  keyIntensity: number;
+
+  fillColor: string;
+  fillIntensity: number;
+
+  rimColor: string;
+  rimIntensity: number;
+};
+
+========== src/engine/liquids/LiquidTypes.ts ==========
+export type LiquidType =
+  | "water"
+  | "blood"
+  | "gastric"
+  | "generic";
+
+export type LiquidAnimation =
+  | "static"
+  | "fill"
+  | "drain"
+  | "wave"
+  | "pulse";
+
+export type LiquidPosition = [
+  number,
+  number,
+  number,
+];
+
+export type LiquidConfig = {
+  type?: LiquidType;
+  position?: LiquidPosition;
+  radius?: number;
+  height?: number;
+  level?: number;
+  animation?: LiquidAnimation;
+  duration?: number;
+  speed?: number;
+  color?: string;
+  startFrame?: number;
+};
+
+export type LiquidStreamConfig = {
+  type?: LiquidType;
+  from: LiquidPosition;
+  to: LiquidPosition;
+  radius?: number;
+  speed?: number;
+  curvature?: number;
+  startFrame?: number;
+  duration?: number;
+  color?: string;
+};
+
+========== src/engine/microscopic/MicroTypes.ts ==========
+export type MicroType = "cell" | "redBloodCell" | "waterMolecule" | "sodiumIon" | "bacteria" | "virus" | "muscleFiber" | "atp" | "adp" | "phosphocreatine";
+export type MicroAnimation = "static" | "float" | "rotate" | "pulse" | "swelling" | "shrink" | "division" | "vibrate" | "appear";
+export type MicroModelProps = { color?: string; activity?: number };
+export type MicroConfig = { type: MicroType; position?: [number,number,number]; rotation?: [number,number,number]; scale?: number; animation?: MicroAnimation; speed?: number; intensity?: number; duration?: number; color?: string; startFrame?: number };
+
+
+========== src/engine/objects/ObjectTypes.ts ==========
+export type ObjectType = "waterBottle" | "waterGlass" | "apple" | "banana" | "dumbbell" | "sugarCube" | "creatineJar" | "scoop" | "shaker";
+export type ObjectAnimation = "static" | "float" | "rotate" | "bounce" | "pulse" | "appear" | "shake" | "open" | "pour";
+export type SupplementOptions = { label?: string; fill?: number; open?: number; time?: number };
+export type ObjectConfig = {
+  type: ObjectType;
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: number;
+  animation?: ObjectAnimation;
+  speed?: number;
+  startFrame?: number;
+  options?: SupplementOptions;
+};
+
+
+========== src/engine/particles/ParticleTypes.ts ==========
+export type ParticleType =
+  | "water"
+  | "bubble"
+  | "sodium"
+  | "blood"
+  | "energy"
+  | "dust";
+
+export type ParticleMotion =
+  | "float"
+  | "rise"
+  | "fall"
+  | "flow"
+  | "orbit"
+  | "burst";
+
+export type ParticleConfig = {
+  type: ParticleType;
+  motion?: ParticleMotion;
+  count?: number;
+  position?: [number, number, number];
+  spread?: [number, number, number];
+  direction?: [number, number, number];
+  color?: string;
+  size?: number;
+  speed?: number;
+  seed?: number;
+  startFrame?: number;
+};
+
+========== src/engine/subtitles/SubtitleTypes.ts ==========
+export type SubtitleWord = {
+  text: string;
+  startMs: number;
+  endMs: number;
+};
+
+export type SubtitleStyle =
+  | "highlight"
+  | "karaoke"
+  | "pop";
+
+export type SubtitleConfig = {
+  words: SubtitleWord[];
+  style?: SubtitleStyle;
+  wordsPerGroup?: number;
+  fontSize?: number;
+  color?: string;
+  activeColor?: string;
+  bottom?: number;
+  uppercase?: boolean;
+};
+
+========== src/engine/transitions/TransitionTypes.ts ==========
+export type TransitionType =
+  | "none"
+  | "fade"
+  | "flash"
+  | "zoom"
+  | "slide"
+  | "wipe";
+
+export type TransitionConfig = {
+  type: TransitionType;
+  durationInFrames?: number;
+  color?: string;
+};

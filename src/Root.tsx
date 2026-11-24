@@ -1,3 +1,7 @@
+import { VideoRenderer } from "./engine/director/VideoRenderer";
+import { validateVideo } from "./engine/director/VideoValidator";
+import { getTotalFrames } from "./engine/director/timeline/TimelineEngine";
+import configurableDemo from "./videos/configurable-demo/video.json";
 import { Composition, staticFile } from "remotion";
 import { Scene, myCompSchema } from "./Scene";
 import { getMediaMetadata } from "./helpers/get-media-metadata";
@@ -61,6 +65,19 @@ import {
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="ConfigurableVideo"
+        component={VideoRenderer}
+        defaultProps={{video: configurableDemo}}
+        fps={configurableDemo.fps}
+        width={configurableDemo.width}
+        height={configurableDemo.height}
+        durationInFrames={Math.round(configurableDemo.duration*configurableDemo.fps)}
+        calculateMetadata={({props})=>{
+          const video=validateVideo(props.video);
+          return {fps:video.fps,width:video.width,height:video.height,durationInFrames:getTotalFrames(video)};
+        }}
+      />
     <Composition
   id="002-Creatine"
   component={CreatineVideo}

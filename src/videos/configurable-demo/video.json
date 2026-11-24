@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "configurable-demo",
+  "title": "Director demo",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "duration": 6,
+  "scenes": [
+    {
+      "id": "gym",
+      "start": 0,
+      "end": 6,
+      "environment": "gym",
+      "camera": {
+        "position": [
+          0,
+          2.8,
+          8.4
+        ],
+        "lookAt": [
+          0,
+          1.7,
+          0
+        ],
+        "tracks": [
+          {
+            "property": "position",
+            "keyframes": [
+              {
+                "time": 0,
+                "value": [
+                  0,
+                  2.8,
+                  8.4
+                ]
+              },
+              {
+                "time": 5,
+                "value": [
+                  0,
+                  2.8,
+                  7.8
+                ],
+                "easing": "easeInOut"
+              }
+            ]
+          }
+        ]
+      },
+      "entities": [
+        {
+          "id": "athlete",
+          "type": "character",
+          "props": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "action": "flex",
+            "appearance": {
+              "shirtColor": "#22c55e",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0
+            }
+          },
+          "tracks": [
+            {
+              "property": "appearance.muscularity",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 5,
+                  "value": 0.8,
+                  "easing": "easeInOut"
+                }
+              ]
+            },
+            {
+              "property": "appearance.lowerBodyMuscularity",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 5,
+                  "value": 0.8,
+                  "easing": "easeInOut"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "props": {
+            "text": "FUERZA Y MASA MUSCULAR",
+            "fontSize": 65
+          },
+          "layout": {
+            "top": 180,
+            "left": 75,
+            "right": 75
+          }
+        }
+      ]
+    }
+  ]
+}

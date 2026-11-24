@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": 1,
+  "id": "002-creatine-json",
+  "title": "Creatina configurable",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "duration": 52.3,
+  "audio": {
+    "voice": {
+      "src": "audio/voice/creatine.mp3"
+    }
+  },
+  "subtitles": {
+    "src": "audio/director/creatine-captions.json",
+    "bottom": 265,
+    "fontSize": 72,
+    "wordsPerGroup": 3,
+    "activeColor": "#fde047"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "start": 0,
+      "end": 3.9,
+      "environment": "gym",
+      "camera": {
+        "position": [
+          0,
+          2.8,
+          8
+        ],
+        "lookAt": [
+          0,
+          1.7,
+          0
+        ]
+      },
+      "entities": [
+        {
+          "id": "character0",
+          "type": "character",
+          "props": {
+            "position": [
+              -1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#ef4444",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0.0
+            },
+            "action": "bicepsCurl"
+          }
+        },
+        {
+          "id": "character1",
+          "type": "character",
+          "props": {
+            "position": [
+              1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#22c55e",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0.0,
+              "shortsColor": "#334155",
+              "shoeColor": "#ffffff",
+              "hairColor": "#75452c",
+              "hairStyle": "short"
+            },
+            "action": "bicepsCurl"
+          }
+        }
+      ]
+    },
+    {
+      "id": "supplement",
+      "start": 3.9,
+      "end": 8.26,
+      "environment": "gym",
+      "camera": {
+        "position": [
+          0,
+          2.8,
+          8
+        ],
+        "lookAt": [
+          0,
+          1.7,
+          0
+        ]
+      },
+      "entities": [
+        {
+          "id": "table",
+          "type": "primitive",
+          "props": {
+            "shape": "box",
+            "position": [
+              0,
+              0.65,
+              0
+            ],
+            "dimensions": [
+              3.8,
+              0.15,
+              1.65
+            ],
+            "color": "#334155"
+          }
+        },
+        {
+          "id": "base",
+          "type": "primitive",
+          "props": {
+            "shape": "box",
+            "position": [
+              0,
+              0.3,
+              0
+            ],
+            "dimensions": [
+              3.4,
+              0.6,
+              1.35
+            ],
+            "color": "#182231"
+          }
+        },
+        {
+          "id": "jar",
+          "type": "object",
+          "props": {
+            "type": "creatineJar",
+            "position": [
+              -0.8,
+              0.725,
+              0
+            ],
+            "options": {
+              "label": "CREATINA",
+              "open": 0
+            }
+          },
+          "tracks": [
+            {
+              "property": "options.open",
+              "keyframes": [
+                {
+                  "time": 0.2725,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 0.763,
+                  "value": 1,
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shaker",
+          "type": "object",
+          "props": {
+            "type": "shaker",
+            "position": [
+              0.85,
+              0.725,
+              0
+            ],
+            "options": {
+              "open": 0,
+              "fill": 0.5
+            }
+          },
+          "tracks": [
+            {
+              "property": "options.open",
+              "keyframes": [
+                {
+                  "time": 1.6895,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 2.2345,
+                  "value": 1,
+                  "easing": "linear"
+                },
+                {
+                  "time": 3.3245,
+                  "value": 1,
+                  "easing": "linear"
+                },
+                {
+                  "time": 3.6515,
+                  "value": 0,
+                  "easing": "linear"
+                }
+              ]
+            },
+            {
+              "property": "options.fill",
+              "keyframes": [
+                {
+                  "time": 2.5615,
+                  "value": 0.5,
+                  "easing": "linear"
+                },
+                {
+                  "time": 3.052,
+                  "value": 0.62,
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scoop",
+          "type": "object",
+          "props": {
+            "type": "scoop",
+            "position": [
+              0.05,
+              0.75,
+              0.55
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 0.65,
+            "options": {
+              "fill": 0
+            }
+          },
+          "tracks": [
+            {
+              "property": "position",
+              "keyframes": [
+                {
+                  "time": 0.0,
+                  "value": [
+                    0.05,
+                    0.75,
+                    0.55
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 0.763,
+                  "value": [
+                    0.05,
+                    0.75,
+                    0.55
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 1.09,
+                  "value": [
+                    -0.8,
+                    2.05,
+                    0.05
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 1.3625,
+                  "value": [
+                    -0.8,
+                    1.55,
+                    0.05
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 1.6895,
+                  "value": [
+                    -0.8,
+                    2.25,
+                    0.05
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 2.289,
+                  "value": [
+                    0.85,
+                    2.35,
+                    0.05
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 2.5615,
+                  "value": [
+                    0.85,
+                    2.35,
+                    0.05
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 3.052,
+                  "value": [
+                    0.85,
+                    2.35,
+                    0.05
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 3.379,
+                  "value": [
+                    0.1,
+                    2.35,
+                    0.55
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 3.6515,
+                  "value": [
+                    0.1,
+                    0.75,
+                    0.55
+                  ],
+                  "easing": "easeInOut"
+                }
+              ]
+            },
+            {
+              "property": "rotation",
+              "keyframes": [
+                {
+                  "time": 0.0,
+                  "value": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 2.289,
+                  "value": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 2.5615,
+                  "value": [
+                    0,
+                    0,
+                    -1.85
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 3.052,
+                  "value": [
+                    0,
+                    0,
+                    -1.85
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 3.379,
+                  "value": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "easing": "easeInOut"
+                },
+                {
+                  "time": 4.36,
+                  "value": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "easing": "easeInOut"
+                }
+              ]
+            },
+            {
+              "property": "options.fill",
+              "keyframes": [
+                {
+                  "time": 1.308,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 1.5805,
+                  "value": 1,
+                  "easing": "linear"
+                },
+                {
+                  "time": 2.5615,
+                  "value": 1,
+                  "easing": "linear"
+                },
+                {
+                  "time": 3.052,
+                  "value": 0,
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "muscle",
+      "start": 8.26,
+      "end": 28.66,
+      "environment": "microscopic",
+      "camera": {
+        "position": [
+          0,
+          2.1,
+          10
+        ],
+        "lookAt": [
+          0,
+          2.1,
+          0
+        ],
+        "tracks": [
+          {
+            "property": "position",
+            "keyframes": [
+              {
+                "time": 0,
+                "value": [
+                  0,
+                  2.1,
+                  10
+                ],
+                "easing": "easeInOut"
+              },
+              {
+                "time": 11.64,
+                "value": [
+                  0,
+                  2.1,
+                  10
+                ],
+                "easing": "easeInOut"
+              },
+              {
+                "time": 12.52,
+                "value": [
+                  0,
+                  2.1,
+                  8.9
+                ],
+                "easing": "easeInOut"
+              },
+              {
+                "time": 13.4,
+                "value": [
+                  0,
+                  2.1,
+                  10
+                ],
+                "easing": "easeInOut"
+              }
+            ]
+          }
+        ]
+      },
+      "entities": [
+        {
+          "id": "fiber0",
+          "type": "micro",
+          "props": {
+            "type": "muscleFiber",
+            "position": [
+              0,
+              2.9,
+              -0.5
+            ],
+            "animation": "pulse",
+            "speed": 1
+          }
+        },
+        {
+          "id": "fiber1",
+          "type": "micro",
+          "props": {
+            "type": "muscleFiber",
+            "position": [
+              0,
+              3.38,
+              -0.5
+            ],
+            "animation": "pulse",
+            "speed": 1
+          }
+        },
+        {
+          "id": "fiber2",
+          "type": "micro",
+          "props": {
+            "type": "muscleFiber",
+            "position": [
+              0,
+              3.86,
+              -0.5
+            ],
+            "animation": "pulse",
+            "speed": 1
+          }
+        },
+        {
+          "id": "atp",
+          "type": "micro",
+          "props": {
+            "type": "atp",
+            "position": [
+              -0.25,
+              1.65,
+              0
+            ],
+            "animation": "static"
+          },
+          "start": 4.58,
+          "end": 8.96
+        },
+        {
+          "id": "adp",
+          "type": "micro",
+          "props": {
+            "type": "adp",
+            "position": [
+              -0.25,
+              1.65,
+              0
+            ],
+            "animation": "static"
+          },
+          "start": 8.96,
+          "end": 18.8
+        },
+        {
+          "id": "atp-restored",
+          "type": "micro",
+          "props": {
+            "type": "atp",
+            "position": [
+              -0.25,
+              1.65,
+              0
+            ],
+            "animation": "static"
+          },
+          "start": 18.8,
+          "end": 20.4
+        },
+        {
+          "id": "phosphocreatine",
+          "type": "micro",
+          "props": {
+            "type": "phosphocreatine",
+            "position": [
+              -0.25,
+              0.65,
+              0
+            ],
+            "animation": "static"
+          },
+          "start": 15.64,
+          "end": 17.12
+        },
+        {
+          "id": "creatine",
+          "type": "primitive",
+          "props": {
+            "shape": "sphere",
+            "position": [
+              -0.8,
+              0.65,
+              0
+            ],
+            "radius": 0.32,
+            "color": "#a78bfa"
+          },
+          "start": 17.12
+        },
+        {
+          "id": "phosphate",
+          "type": "primitive",
+          "props": {
+            "shape": "sphere",
+            "position": [
+              -0.25,
+              0.65,
+              0
+            ],
+            "radius": 0.2,
+            "color": "#fbbf24"
+          },
+          "start": 17.12,
+          "end": 18.8,
+          "tracks": [
+            {
+              "property": "position",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": [
+                    -0.25,
+                    0.65,
+                    0
+                  ],
+                  "easing": "linear"
+                },
+                {
+                  "time": 1.68,
+                  "value": [
+                    0.71,
+                    1.65,
+                    0
+                  ],
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "energy",
+          "type": "energyMeter",
+          "props": {
+            "value": 100,
+            "label": "Disponibilidad energética ilustrativa",
+            "color": "#22c55e"
+          },
+          "start": 4.58,
+          "layout": {
+            "bottom": 480,
+            "left": 120,
+            "right": 140
+          },
+          "tracks": [
+            {
+              "property": "value",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 100,
+                  "easing": "linear"
+                },
+                {
+                  "time": 4.38,
+                  "value": 100,
+                  "easing": "linear"
+                },
+                {
+                  "time": 8.82,
+                  "value": 35,
+                  "easing": "linear"
+                },
+                {
+                  "time": 12.54,
+                  "value": 35,
+                  "easing": "linear"
+                },
+                {
+                  "time": 14.22,
+                  "value": 100,
+                  "easing": "linear"
+                }
+              ]
+            },
+            {
+              "property": "color",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": "#22c55e",
+                  "easing": "linear"
+                },
+                {
+                  "time": 6,
+                  "value": "#22c55e",
+                  "easing": "linear"
+                },
+                {
+                  "time": 8.82,
+                  "value": "#ef4444",
+                  "easing": "linear"
+                },
+                {
+                  "time": 12.54,
+                  "value": "#ef4444",
+                  "easing": "linear"
+                },
+                {
+                  "time": 14.22,
+                  "value": "#22c55e",
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hook",
+          "type": "text",
+          "props": {
+            "text": "¿Y SI RECUPERAS\nESA ENERGÍA\nMÁS RÁPIDO?",
+            "fontSize": 65,
+            "color": "#fde047"
+          },
+          "start": 11.64,
+          "end": 13.4,
+          "layout": {
+            "top": 200,
+            "left": 75,
+            "right": 75
+          }
+        }
+      ]
+    },
+    {
+      "id": "comparison",
+      "start": 28.66,
+      "end": 40.04,
+      "environment": "gym",
+      "camera": {
+        "position": [
+          0,
+          2.8,
+          8
+        ],
+        "lookAt": [
+          0,
+          1.7,
+          0
+        ]
+      },
+      "entities": [
+        {
+          "id": "character0",
+          "type": "character",
+          "props": {
+            "position": [
+              -1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#ef4444",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0.0
+            },
+            "action": "bicepsCurl",
+            "workout": {
+              "reps": 8,
+              "period": 3.5,
+              "fail": true
+            },
+            "animationOffset": 23.14
+          }
+        },
+        {
+          "id": "counter0",
+          "type": "repCounter",
+          "props": {
+            "workout": {
+              "reps": 8,
+              "period": 3.5,
+              "fail": true
+            },
+            "animationOffset": 23.14,
+            "color": "#ef4444",
+            "label": "SIN CREATINA"
+          },
+          "group": "reps",
+          "layout": {
+            "bottom": 1530,
+            "left": 90,
+            "right": 90
+          }
+        },
+        {
+          "id": "character1",
+          "type": "character",
+          "props": {
+            "position": [
+              1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#22c55e",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0.0,
+              "shortsColor": "#334155",
+              "shoeColor": "#ffffff",
+              "hairColor": "#75452c",
+              "hairStyle": "short"
+            },
+            "action": "bicepsCurl",
+            "workout": {
+              "reps": 9,
+              "period": 3.5,
+              "fail": false
+            },
+            "animationOffset": 23.14
+          }
+        },
+        {
+          "id": "counter1",
+          "type": "repCounter",
+          "props": {
+            "workout": {
+              "reps": 9,
+              "period": 3.5,
+              "fail": false
+            },
+            "animationOffset": 23.14,
+            "color": "#22c55e",
+            "label": "CON CREATINA"
+          },
+          "group": "reps",
+          "layout": {
+            "bottom": 1530,
+            "left": 90,
+            "right": 90
+          }
+        }
+      ]
+    },
+    {
+      "id": "growth",
+      "start": 40.04,
+      "end": 46.74,
+      "environment": "gym",
+      "camera": {
+        "position": [
+          0,
+          2.8,
+          8
+        ],
+        "lookAt": [
+          0,
+          1.7,
+          0
+        ]
+      },
+      "entities": [
+        {
+          "id": "character0",
+          "type": "character",
+          "props": {
+            "position": [
+              -1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#ef4444",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0.0
+            },
+            "action": "flex"
+          },
+          "tracks": [
+            {
+              "property": "appearance.muscularity",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 1.24,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 5.4,
+                  "value": 0.25,
+                  "easing": "linear"
+                }
+              ]
+            },
+            {
+              "property": "appearance.lowerBodyMuscularity",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 0.0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 1.24,
+                  "value": 0.0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 5.4,
+                  "value": 0.2,
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "character1",
+          "type": "character",
+          "props": {
+            "position": [
+              1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#22c55e",
+              "muscularity": 0,
+              "lowerBodyMuscularity": 0.0,
+              "shortsColor": "#334155",
+              "shoeColor": "#ffffff",
+              "hairColor": "#75452c",
+              "hairStyle": "short"
+            },
+            "action": "flex"
+          },
+          "tracks": [
+            {
+              "property": "appearance.muscularity",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 1.24,
+                  "value": 0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 5.4,
+                  "value": 0.8,
+                  "easing": "linear"
+                }
+              ]
+            },
+            {
+              "property": "appearance.lowerBodyMuscularity",
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 0.0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 1.24,
+                  "value": 0.0,
+                  "easing": "linear"
+                },
+                {
+                  "time": 5.4,
+                  "value": 0.64,
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conclusion",
+      "start": 46.74,
+      "end": 52.3,
+      "environment": "gym",
+      "camera": {
+        "position": [
+          0,
+          2.8,
+          8
+        ],
+        "lookAt": [
+          0,
+          1.7,
+          0
+        ]
+      },
+      "entities": [
+        {
+          "id": "character0",
+          "type": "character",
+          "props": {
+            "position": [
+              -1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#ef4444",
+              "muscularity": 0.25,
+              "lowerBodyMuscularity": 0.2
+            },
+            "action": "thumbsUp"
+          }
+        },
+        {
+          "id": "character1",
+          "type": "character",
+          "props": {
+            "position": [
+              1.05,
+              0,
+              0
+            ],
+            "size": 2.7,
+            "appearance": {
+              "shirtColor": "#22c55e",
+              "muscularity": 0.8,
+              "lowerBodyMuscularity": 0.64,
+              "shortsColor": "#334155",
+              "shoeColor": "#ffffff",
+              "hairColor": "#75452c",
+              "hairStyle": "short"
+            },
+            "action": "thumbsUp"
+          }
+        }
+      ]
+    }
+  ]
+}

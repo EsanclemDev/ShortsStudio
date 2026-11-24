@@ -1,0 +1,421 @@
+===== LipSync.ts =====
+export type LipSyncData = {
+  fps: number;
+  durationMs: number;
+  frames: number[];
+};
+
+export const getMouthOpen = (
+  data: LipSyncData,
+  frame: number,
+  fps: number,
+): number => {
+  const time = frame / fps;
+
+  const audioFrame = Math.floor(
+    time * data.fps,
+  );
+
+  return Math.max(
+    0,
+    Math.min(
+      1,
+      data.frames[audioFrame] ?? 0,
+    ),
+  );
+};===== generate_lipsync.py =====
+import argparse
+import json
+import subprocess
+from pathlib import Path
+
+import numpy as np
+
+
+SAMPLE_RATE = 16000
+
+
+def generate_lipsync(
+    audio_path: Path,
+    output_path: Path,
+    fps: int,
+):
+    if not audio_path.is_file():
+        raise FileNotFoundError(audio_path)
+
+    command = [
+        "ffmpeg",
+        "-v", "error",
+        "-i", str(audio_path),
+        "-ac", "1",
+        "-ar", str(SAMPLE_RATE),
+        "-f", "f32le",
+        "pipe:1",
+    ]
+
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        check=True,
+    )
+
+    samples = np.frombuffer(
+        result.stdout,
+        dtype=np.float32,
+    )
+
+    if samples.size == 0:
+        raise RuntimeError("Empty audio")
+
+    total_frames = int(
+        np.ceil(len(samples) * fps / SAMPLE_RATE)
+    )
+
+    amplitudes = []
+
+    for frame in range(total_frames):
+        start = int(frame * SAMPLE_RATE / fps)
+        end = int((frame + 1) * SAMPLE_RATE / fps)
+
+        chunk = samples[start:end]
+
+        rms = (
+            float(np.sqrt(np.mean(chunk ** 2)))
+            if chunk.size
+            else 0.0
+        )
+
+        amplitudes.append(rms)
+
+    reference = max(
+        float(np.percentile(amplitudes, 95)),
+        0.000001,
+    )
+
+    noise_gate = reference * 0.06
+
+    values = []
+    previous = 0.0
+
+    for amplitude in amplitudes:
+        if amplitude < noise_gate:
+            target = 0.0
+        else:
+            target = min(
+                1.0,
+                amplitude / reference,
+            )
+
+            target = target ** 0.65
+
+        smoothing = (
+            0.65 if target > previous else 0.45
+        )
+
+        current = (
+            previous
+            + (target - previous) * smoothing
+        )
+
+        if current < 0.025:
+            current = 0.0
+
+        values.append(round(current, 4))
+
+        previous = current
+
+    output = {
+        "fps": fps,
+        "durationMs": round(
+            len(samples) / SAMPLE_RATE * 1000
+        ),
+        "frames": values,
+    }
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    output_path.write_text(
+        json.dumps(output, indent=2),
+        encoding="utf-8",
+    )
+
+    print("Lip-sync generated")
+    print(f"Audio: {audio_path}")
+    print(f"FPS: {fps}")
+    print(f"Frames: {total_frames}")
+    print(f"Duration: {output['durationMs']} ms")
+    print(f"Output: {output_path}")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("audio")
+
+    parser.add_argument(
+        "--output",
+        "-o",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--fps",
+        type=int,
+        default=30,
+    )
+
+    args = parser.parse_args()
+
+    if args.fps <= 0:
+        parser.error("FPS must be positive")
+
+    generate_lipsync(
+        Path(args.audio),
+        Path(args.output),
+        args.fps,
+    )
+
+
+if __name__ == "__main__":
+    main()===== captions.json =====
+[
+  {
+    "text": "¡Dos",
+    "startMs": 0,
+    "endMs": 400
+  },
+  {
+    "text": "personas!",
+    "startMs": 400,
+    "endMs": 840
+  },
+  {
+    "text": "El",
+    "startMs": 1280,
+    "endMs": 1460
+  },
+  {
+    "text": "mismo",
+    "startMs": 1460,
+    "endMs": 1780
+  },
+  {
+    "text": "entrenamiento,",
+    "startMs": 1780,
+    "endMs": 2420
+  },
+  {
+    "text": "el",
+    "startMs": 2740,
+    "endMs": 2900
+  },
+  {
+    "text": "mismo",
+    "startMs": 2900,
+    "endMs": 3300
+  },
+  {
+    "text": "peso,",
+    "startMs": 3300,
+    "endMs": 3640
+  },
+  {
+    "text": "pero",
+    "startMs": 3900,
+    "endMs": 4240
+  },
+  {
+    "text": "una",
+    "startMs": 4240,
+    "endMs": 4580
+  },
+  {
+    "text": "toma",
+    "startMs": 4580,
+    "endMs": 4820
+  },
+  {
+    "text": "creatina",
+    "startMs": 4820,
+    "endMs": 5360
+  },
+  {
+    "text": "y",
+    "startMs": 5360,
+    "endMs": 5680
+  },
+  {
+    "text": "la",
+    "startMs": 5680,
+    "endMs": 5780
+  },
+  {
+    "text": "otra",
+    "startMs": 5780,
+    "endMs": 6000
+  },
+  {
+    "text": "no.",
+    "startMs": 6000,
+    "endMs": 6220
+  },
+  {
+    "text": "¿Qué",
+    "startMs": 6600,
+    "endMs": 6720
+  },
+  {
+    "text": "diferencia",
+    "startMs": 6720,
+    "endMs": 7160
+  },
+  {
+    "text": "puede",
+    "startMs": 7160,
+    "endMs": 7480
+  },
+  {
+    "text": "haber?",
+    "startMs": 7480,
+    "endMs": 7720
+  },
+  {
+    "text": "El
+===== lipsync.json =====
+{
+  "fps": 30,
+  "durationMs": 52271,
+  "frames": [
+    0.0,
+    0.0,
+    0.1804,
+    0.3407,
+    0.4749,
+    0.4952,
+    0.4871,
+    0.8205,
+    0.8466,
+    0.8428,
+    0.6927,
+    0.5374,
+    0.2956,
+    0.1626,
+    0.4921,
+    0.8222,
+    0.7408,
+    0.5305,
+    0.436,
+    0.4492,
+    0.6654,
+    0.6529,
+    0.5317,
+    0.4485,
+    0.405,
+    0.3687,
+    0.3497,
+    0.3476,
+    0.3411,
+    0.3253,
+    0.2805,
+    0.1543,
+    0.0848,
+    0.0467,
+    0.0257,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4105,
+    0.7937,
+    0.9138,
+    0.8994,
+    0.7907,
+    0.8481,
+    0.9468,
+    0.9377,
+    0.843,
+    0.8242,
+    0.7686,
+    0.6665,
+    0.5608,
+    0.6826,
+    0.7634,
+    0.9172,
+    0.971,
+    0.9121,
+    0.6344,
+    0.8431,
+    0.8985,
+    0.9645,
+    0.9,
+    0.9068,
+    0.9674,
+    0.8758,
+    0.8724,
+    0.9237,
+    0.8961,
+    0.7644,
+    0.6137,
+    0.4463,
+    0.2455,
+    0.3317,
+    0.3705,
+    0.3682,
+    0.3348,
+    0.2951,
+    0.1623,
+    0.0893,
+    0.0491,
+    0.027,
+    0.0,
+    0.4017,
+    0.7906,
+    0.9267,
+    0.786,
+    0.6707,
+    0.7017,
+    0.7849,
+    0.7692,
+    0.7562,
+    0.7247,
+    0.6638,
+    0.6625,
+    0.6508,
+    0.572,
+    0.6849,
+    0.7542,
+    0.914,
+    0.9699,
+    0.8925,
+    0.6258,
+    0.3442,
+    0.7705,
+    0.9197,
+    0.8814,
+    0.7044,
+    0.5955,
+    0.5103,
+    0.7027,
+    0.6224,
+    0.4696,
+    0.3622,
+    0.1
+===== Audio assets =====
+public/audio/music/calm.wav
+public/audio/music/curiosity.wav
+public/audio/music/energetic.wav
+public/audio/music/tension.wav
+public/audio/sfx/click.wav
+public/audio/sfx/heartbeat.wav
+public/audio/sfx/impact.wav
+public/audio/sfx/pop.wav
+public/audio/sfx/success.wav
+public/audio/sfx/warning.wav
+public/audio/sfx/water.wav
+public/audio/sfx/whoosh.wav
+public/audio/voice/creatine.mp3
+public/audio/voice/running-heart.mp3
+public/audio/voice/water.mp3

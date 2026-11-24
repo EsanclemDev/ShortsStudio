@@ -1,0 +1,10 @@
+import type {z} from 'zod';
+import type {VideoSchema} from './schemas/VideoSchema';
+import type {SceneSchema} from './schemas/SceneSchema';
+import type {EntitySchema} from './schemas/EntitySchema';
+import type {TrackSchema,ValueSchema} from './schemas/AnimationSchema';
+export type VideoConfig=z.infer<typeof VideoSchema>;
+export type SceneConfig=z.infer<typeof SceneSchema>;
+export type EntityConfig=z.infer<typeof EntitySchema>;
+export type Track=z.infer<typeof TrackSchema>;
+export type KeyframeValue=z.infer<typeof ValueSchema>;

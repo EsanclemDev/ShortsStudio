@@ -16,6 +16,8 @@ export type HandGesture =
   | "point"; 
 export type CharacterAppearance = {
   muscularity?: number;
+  upperBodyMuscularity?: number;
+  lowerBodyMuscularity?: number;
   shirtColor?: string;
   shortsColor?: string;
   shoeColor?: string;
@@ -72,7 +74,8 @@ objectOffsetX = -5,
 objectOffsetY = -30,
 bottleOpen = false,
 }) => {
-  const muscle = Math.max(0, Math.min(1, appearance.muscularity ?? 0));
+  const muscle = Math.max(0, Math.min(1, appearance.upperBodyMuscularity ?? appearance.muscularity ?? 0));
+  const legs = Math.max(0, Math.min(1, appearance.lowerBodyMuscularity ?? appearance.muscularity ?? 0));
   const ink = "#111111";
   const skin = appearance.skinColor ?? "#ffba80";
   const flush = Math.max(0, Math.min(1, fatigue));
@@ -100,16 +103,11 @@ bottleOpen = false,
     "Q -85 12 -85 45 Q -50 65 35 43 " +
     "Q 40 18 15 5 L 15 -12 Z";
 
-  const shirt = muscle > 0 ? `M ${210-20*muscle} 340 L ${150-30*muscle} 375 L ${185-20*muscle} 440 L ${225-12*muscle} 410 L ${200-5*muscle} 560 L ${400+5*muscle} 560 L ${375+12*muscle} 410 L ${415+20*muscle} 440 L ${450+30*muscle} 375 L ${390+20*muscle} 340 Z` :
-    "M 210 340 L 150 375 L 185 440 " +
-    "L 225 410 L 200 560 L 400 560 " +
-    "L 375 410 L 415 440 L 450 375 " +
-    "L 390 340 Z";
-
-  const shorts =
-    "M 205 560 L 395 560 L 420 670 " +
-    "L 320 690 L 300 610 L 280 690 " +
-    "L 180 670 Z";
+  const shoulder = 48 * muscle;
+  const chest = 28 * muscle;
+  const waist = 24 * muscle;
+  const shirt = muscle === 0 ? "M 210 340 L 150 375 L 185 440 L 225 410 L 200 560 L 400 560 L 375 410 L 415 440 L 450 375 L 390 340 Z" : `M ${210-shoulder*.6} 340 Q ${170-shoulder} 345 ${150-shoulder} 375 L ${185-shoulder} 440 L ${225-chest} 410 Q ${215-chest} 470 ${200+waist} 560 L ${400-waist} 560 Q ${385+chest} 470 ${375+chest} 410 L ${415+shoulder} 440 L ${450+shoulder} 375 Q ${430+shoulder} 345 ${390+shoulder*.6} 340 Z`;
+  const shorts = `M ${205+waist} 560 L ${395-waist} 560 L ${420+12*legs} 670 L 320 690 L 300 610 L 280 690 L ${180-12*legs} 670 Z`;
 
   const hair = appearance.hairStyle === "short"
     ? "M 145 210 Q 120 70 260 65 Q 400 40 455 155 L 455 210 L 420 160 Q 300 185 190 145 Z"
@@ -170,7 +168,7 @@ bottleOpen = false,
       <path
         d={`M 0 0 L ${side * 12} 95`}
         stroke="white"
-        strokeWidth={36}
+        strokeWidth={36 + 42 * legs}
         strokeLinecap="round"
         fill="none"
       />
@@ -178,11 +176,12 @@ bottleOpen = false,
       <path
         d={`M 0 0 L ${side * 12} 95`}
         stroke={ink}
-        strokeWidth={16}
+        strokeWidth={16 + 42 * legs}
         strokeLinecap="round"
         fill="none"
       />
 
+      {legs > 0 && <path d={`M 0 0 L ${side * 12} 95`} stroke={skin} strokeWidth={Math.max(0, 42 * legs - 2)} strokeLinecap="round" fill="none" />}
       {/* Rodilla y pantorrilla */}
       <g
         transform={`translate(${side * 12} 95)
@@ -191,7 +190,7 @@ bottleOpen = false,
         <path
           d={`M 0 0 L ${side * 13} 95`}
           stroke="white"
-          strokeWidth={36}
+          strokeWidth={36 + 30 * legs}
           strokeLinecap="round"
           fill="none"
         />
@@ -199,11 +198,12 @@ bottleOpen = false,
         <path
           d={`M 0 0 L ${side * 13} 95`}
           stroke={ink}
-          strokeWidth={16}
+          strokeWidth={16 + 30 * legs}
           strokeLinecap="round"
           fill="none"
         />
 
+        {legs > 0 && <path d={`M 0 0 L ${side * 13} 95`} stroke={skin} strokeWidth={Math.max(0, 30 * legs - 2)} strokeLinecap="round" fill="none" />}
         {/* Zapatilla */}
         <g
           transform={`translate(${side * 13} 95)
@@ -245,7 +245,12 @@ bottleOpen = false,
       <path d={shirt} fill={red} {...outline} />
       <path d={shirt} fill="url(#crayon)" />
 
-      {muscle > 0 && <path d="M 235 425 Q 265 443 290 427 M 310 427 Q 335 443 365 425" fill="none" stroke={ink} strokeWidth={5} opacity={muscle * .65} strokeLinecap="round" />}
+      {muscle > 0 && (
+        <g fill="none" stroke={ink} strokeLinecap="round" strokeLinejoin="round" opacity={muscle * .85}>
+          <path d={`M ${230-chest*.6} 386 Q 260 371 294 391 L 294 426 Q 260 448 ${230-chest*.6} 425 M ${370+chest*.6} 386 Q 340 371 306 391 L 306 426 Q 340 448 ${370+chest*.6} 425`} strokeWidth={5} />
+          <path d="M 300 444 L 300 539 M 270 457 Q 283 450 294 457 M 306 457 Q 317 450 330 457 M 270 482 Q 283 489 294 482 M 306 482 Q 317 489 330 482 M 274 510 Q 285 517 294 510 M 306 510 Q 315 517 326 510 M 267 455 Q 260 497 280 539 M 333 455 Q 340 497 320 539" strokeWidth={4} opacity={.85} />
+        </g>
+      )}
       {/* Cuello */}
       <ellipse
         cx="300"
@@ -384,7 +389,7 @@ bottleOpen = false,
   return (
     <g
       key={side}
-      transform={`translate(${300 + side * (120 + 18 * muscle)} 390)
+      transform={`translate(${300 + side * (120 + 38 * muscle)} 390)
         rotate(${armAngle})`}
     >
       {/* Brazo superior */}

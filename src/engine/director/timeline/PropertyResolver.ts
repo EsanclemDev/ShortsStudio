@@ -1,0 +1,3 @@
+import type {EntityConfig} from '../VideoTypes';
+import {sampleTrack} from './KeyframeEngine';
+export function resolveProps(entity:EntityConfig,time:number){const props=structuredClone(entity.props);for(const track of entity.tracks??[]){const parts=track.property.split('.');if(parts.some(k=>['__proto__','constructor','prototype'].includes(k)))throw new Error('Unsafe property');let target=props;for(const part of parts.slice(0,-1)){const next=target[part];if(!next||typeof next!=='object'||Array.isArray(next))throw new Error(`Missing property ${track.property}`);target=next as Record<string,unknown>;}const key=parts[parts.length-1];if(!Object.hasOwn(target,key))throw new Error(`Missing property ${track.property}`);target[key]=sampleTrack(track,time);}return props;}

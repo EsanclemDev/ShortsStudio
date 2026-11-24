@@ -1,0 +1,5 @@
+import type {VideoConfig} from '../VideoTypes';
+import {resolveProps} from './PropertyResolver';
+export const toFrame=(seconds:number,fps:number)=>Math.round(seconds*fps);
+export const getTotalFrames=(video:VideoConfig)=>toFrame(video.duration,video.fps);
+export function resolveFrame(video:VideoConfig,frame:number){if(!Number.isInteger(frame)||frame<0||frame>=getTotalFrames(video))throw new Error('Frame outside video');const scene=video.scenes.find(s=>frame>=toFrame(s.start,video.fps)&&frame<toFrame(s.end,video.fps));if(!scene)throw new Error(`No scene at frame ${frame}`);const startFrame=toFrame(scene.start,video.fps),localFrame=frame-startFrame;return {scene,startFrame,localFrame,durationInFrames:toFrame(scene.end,video.fps)-startFrame,entities:scene.entities.filter(e=>localFrame>=toFrame(e.start??0,video.fps)&&localFrame<toFrame(e.end??(scene.end-scene.start),video.fps)).map(e=>{const entityFrame=localFrame-toFrame(e.start??0,video.fps);return {...e,localFrame:entityFrame,props:resolveProps(e,entityFrame/video.fps)};})};}

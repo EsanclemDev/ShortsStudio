@@ -1,0 +1,632 @@
+[
+  {
+    "text": "¡Dos",
+    "startMs": 0,
+    "endMs": 400
+  },
+  {
+    "text": "personas!",
+    "startMs": 400,
+    "endMs": 840
+  },
+  {
+    "text": "El",
+    "startMs": 1280,
+    "endMs": 1460
+  },
+  {
+    "text": "mismo",
+    "startMs": 1460,
+    "endMs": 1780
+  },
+  {
+    "text": "entrenamiento,",
+    "startMs": 1780,
+    "endMs": 2420
+  },
+  {
+    "text": "el",
+    "startMs": 2740,
+    "endMs": 2900
+  },
+  {
+    "text": "mismo",
+    "startMs": 2900,
+    "endMs": 3300
+  },
+  {
+    "text": "peso,",
+    "startMs": 3300,
+    "endMs": 3640
+  },
+  {
+    "text": "pero",
+    "startMs": 3900,
+    "endMs": 4240
+  },
+  {
+    "text": "una",
+    "startMs": 4240,
+    "endMs": 4580
+  },
+  {
+    "text": "toma",
+    "startMs": 4580,
+    "endMs": 4820
+  },
+  {
+    "text": "creatina",
+    "startMs": 4820,
+    "endMs": 5360
+  },
+  {
+    "text": "y",
+    "startMs": 5360,
+    "endMs": 5680
+  },
+  {
+    "text": "la",
+    "startMs": 5680,
+    "endMs": 5780
+  },
+  {
+    "text": "otra",
+    "startMs": 5780,
+    "endMs": 6000
+  },
+  {
+    "text": "no.",
+    "startMs": 6000,
+    "endMs": 6220
+  },
+  {
+    "text": "¿Qué",
+    "startMs": 6600,
+    "endMs": 6720
+  },
+  {
+    "text": "diferencia",
+    "startMs": 6720,
+    "endMs": 7160
+  },
+  {
+    "text": "puede",
+    "startMs": 7160,
+    "endMs": 7480
+  },
+  {
+    "text": "haber?",
+    "startMs": 7480,
+    "endMs": 7720
+  },
+  {
+    "text": "El",
+    "startMs": 8260,
+    "endMs": 8380
+  },
+  {
+    "text": "secreto",
+    "startMs": 8380,
+    "endMs": 8820
+  },
+  {
+    "text": "está",
+    "startMs": 8820,
+    "endMs": 9040
+  },
+  {
+    "text": "dentro",
+    "startMs": 9040,
+    "endMs": 9540
+  },
+  {
+    "text": "de",
+    "startMs": 9540,
+    "endMs": 9740
+  },
+  {
+    "text": "tus",
+    "startMs": 9740,
+    "endMs": 9880
+  },
+  {
+    "text": "músculos.",
+    "startMs": 9880,
+    "endMs": 10360
+  },
+  {
+    "text": "Cada",
+    "startMs": 10880,
+    "endMs": 11060
+  },
+  {
+    "text": "vez",
+    "startMs": 11060,
+    "endMs": 11240
+  },
+  {
+    "text": "que",
+    "startMs": 11240,
+    "endMs": 11400
+  },
+  {
+    "text": "levantas",
+    "startMs": 11400,
+    "endMs": 11860
+  },
+  {
+    "text": "una",
+    "startMs": 11860,
+    "endMs": 12020
+  },
+  {
+    "text": "mancuerna,",
+    "startMs": 12020,
+    "endMs": 12580
+  },
+  {
+    "text": "tus",
+    "startMs": 12840,
+    "endMs": 12880
+  },
+  {
+    "text": "músculos",
+    "startMs": 12880,
+    "endMs": 13320
+  },
+  {
+    "text": "utilizan",
+    "startMs": 13320,
+    "endMs": 13880
+  },
+  {
+    "text": "una",
+    "startMs": 13880,
+    "endMs": 14060
+  },
+  {
+    "text": "molécula",
+    "startMs": 14060,
+    "endMs": 14560
+  },
+  {
+    "text": "llamada",
+    "startMs": 14560,
+    "endMs": 14960
+  },
+  {
+    "text": "ATP",
+    "startMs": 14960,
+    "endMs": 15480
+  },
+  {
+    "text": "para",
+    "startMs": 15480,
+    "endMs": 15880
+  },
+  {
+    "text": "obtener",
+    "startMs": 15880,
+    "endMs": 16300
+  },
+  {
+    "text": "energía.",
+    "startMs": 16300,
+    "endMs": 16680
+  },
+  {
+    "text": "Durante",
+    "startMs": 17220,
+    "endMs": 17500
+  },
+  {
+    "text": "un",
+    "startMs": 17500,
+    "endMs": 17680
+  },
+  {
+    "text": "esfuerzo",
+    "startMs": 17680,
+    "endMs": 18060
+  },
+  {
+    "text": "intenso,",
+    "startMs": 18060,
+    "endMs": 18540
+  },
+  {
+    "text": "esa",
+    "startMs": 18820,
+    "endMs": 18940
+  },
+  {
+    "text": "energía",
+    "startMs": 18940,
+    "endMs": 19260
+  },
+  {
+    "text": "disponible",
+    "startMs": 19260,
+    "endMs": 19900
+  },
+  {
+    "text": "disminuye",
+    "startMs": 19900,
+    "endMs": 20500
+  },
+  {
+    "text": "rápidamente.",
+    "startMs": 20500,
+    "endMs": 21220
+  },
+  {
+    "text": "Aquí",
+    "startMs": 21660,
+    "endMs": 21960
+  },
+  {
+    "text": "entra",
+    "startMs": 21960,
+    "endMs": 22260
+  },
+  {
+    "text": "en",
+    "startMs": 22260,
+    "endMs": 22440
+  },
+  {
+    "text": "juego",
+    "startMs": 22440,
+    "endMs": 22640
+  },
+  {
+    "text": "la",
+    "startMs": 22640,
+    "endMs": 22900
+  },
+  {
+    "text": "creatina.",
+    "startMs": 22900,
+    "endMs": 23480
+  },
+  {
+    "text": "Gracias",
+    "startMs": 23900,
+    "endMs": 24140
+  },
+  {
+    "text": "a",
+    "startMs": 24140,
+    "endMs": 24400
+  },
+  {
+    "text": "la",
+    "startMs": 24400,
+    "endMs": 24460
+  },
+  {
+    "text": "fosfo",
+    "startMs": 24460,
+    "endMs": 24780
+  },
+  {
+    "text": "creatina,",
+    "startMs": 24780,
+    "endMs": 25380
+  },
+  {
+    "text": "tus",
+    "startMs": 25620,
+    "endMs": 25700
+  },
+  {
+    "text": "músculos",
+    "startMs": 25700,
+    "endMs": 26100
+  },
+  {
+    "text": "pueden",
+    "startMs": 26100,
+    "endMs": 26480
+  },
+  {
+    "text": "regenerar",
+    "startMs": 26480,
+    "endMs": 27060
+  },
+  {
+    "text": "ATP",
+    "startMs": 27060,
+    "endMs": 27600
+  },
+  {
+    "text": "más",
+    "startMs": 27600,
+    "endMs": 28060
+  },
+  {
+    "text": "rápidamente.",
+    "startMs": 28060,
+    "endMs": 28660
+  },
+  {
+    "text": "Ahora",
+    "startMs": 28660,
+    "endMs": 29280
+  },
+  {
+    "text": "fíjate",
+    "startMs": 29280,
+    "endMs": 29860
+  },
+  {
+    "text": "en",
+    "startMs": 29860,
+    "endMs": 30020
+  },
+  {
+    "text": "estos",
+    "startMs": 30020,
+    "endMs": 30240
+  },
+  {
+    "text": "dos",
+    "startMs": 30240,
+    "endMs": 30460
+  },
+  {
+    "text": "personajes.",
+    "startMs": 30460,
+    "endMs": 31020
+  },
+  {
+    "text": "Ambos",
+    "startMs": 31420,
+    "endMs": 31760
+  },
+  {
+    "text": "llevan",
+    "startMs": 31760,
+    "endMs": 32100
+  },
+  {
+    "text": "ocho",
+    "startMs": 32100,
+    "endMs": 32500
+  },
+  {
+    "text": "repeticiones.",
+    "startMs": 32500,
+    "endMs": 33120
+  },
+  {
+    "text": "Uno",
+    "startMs": 33520,
+    "endMs": 33700
+  },
+  {
+    "text": "intenta",
+    "startMs": 33700,
+    "endMs": 34280
+  },
+  {
+    "text": "hacer",
+    "startMs": 34280,
+    "endMs": 34480
+  },
+  {
+    "text": "la",
+    "startMs": 34480,
+    "endMs": 34640
+  },
+  {
+    "text": "novena,",
+    "startMs": 34640,
+    "endMs": 35020
+  },
+  {
+    "text": "pero",
+    "startMs": 35220,
+    "endMs": 35320
+  },
+  {
+    "text": "llega",
+    "startMs": 35320,
+    "endMs": 35600
+  },
+  {
+    "text": "al",
+    "startMs": 35600,
+    "endMs": 35820
+  },
+  {
+    "text": "fallo",
+    "startMs": 35820,
+    "endMs": 36140
+  },
+  {
+    "text": "muscular.",
+    "startMs": 36140,
+    "endMs": 36520
+  },
+  {
+    "text": "El",
+    "startMs": 36940,
+    "endMs": 37080
+  },
+  {
+    "text": "otro",
+    "startMs": 37080,
+    "endMs": 37300
+  },
+  {
+    "text": "consigue",
+    "startMs": 37300,
+    "endMs": 37860
+  },
+  {
+    "text": "completar",
+    "startMs": 37860,
+    "endMs": 38440
+  },
+  {
+    "text": "una",
+    "startMs": 38440,
+    "endMs": 38740
+  },
+  {
+    "text": "repetición",
+    "startMs": 38740,
+    "endMs": 39380
+  },
+  {
+    "text": "más.",
+    "startMs": 39380,
+    "endMs": 39580
+  },
+  {
+    "text": "Ese",
+    "startMs": 40040,
+    "endMs": 40300
+  },
+  {
+    "text": "pequeño",
+    "startMs": 40300,
+    "endMs": 40520
+  },
+  {
+    "text": "extra,",
+    "startMs": 40520,
+    "endMs": 40980
+  },
+  {
+    "text": "acumulado",
+    "startMs": 41280,
+    "endMs": 41780
+  },
+  {
+    "text": "durante",
+    "startMs": 41780,
+    "endMs": 42060
+  },
+  {
+    "text": "semanas",
+    "startMs": 42060,
+    "endMs": 42600
+  },
+  {
+    "text": "de",
+    "startMs": 42600,
+    "endMs": 42840
+  },
+  {
+    "text": "entrenamiento,",
+    "startMs": 42840,
+    "endMs": 43480
+  },
+  {
+    "text": "puede",
+    "startMs": 43780,
+    "endMs": 43900
+  },
+  {
+    "text": "ayudarte",
+    "startMs": 43900,
+    "endMs": 44420
+  },
+  {
+    "text": "a",
+    "startMs": 44420,
+    "endMs": 44500
+  },
+  {
+    "text": "ganar",
+    "startMs": 44500,
+    "endMs": 44820
+  },
+  {
+    "text": "más",
+    "startMs": 44820,
+    "endMs": 45020
+  },
+  {
+    "text": "fuerza",
+    "startMs": 45020,
+    "endMs": 45440
+  },
+  {
+    "text": "y",
+    "startMs": 45440,
+    "endMs": 45620
+  },
+  {
+    "text": "más",
+    "startMs": 45620,
+    "endMs": 45820
+  },
+  {
+    "text": "a",
+    "startMs": 45820,
+    "endMs": 45940
+  },
+  {
+    "text": "muscular.",
+    "startMs": 45940,
+    "endMs": 46300
+  },
+  {
+    "text": "Recuerda,",
+    "startMs": 46740,
+    "endMs": 47300
+  },
+  {
+    "text": "la",
+    "startMs": 47560,
+    "endMs": 47680
+  },
+  {
+    "text": "creatina",
+    "startMs": 47680,
+    "endMs": 48200
+  },
+  {
+    "text": "no",
+    "startMs": 48200,
+    "endMs": 48460
+  },
+  {
+    "text": "sustituya",
+    "startMs": 48460,
+    "endMs": 49180
+  },
+  {
+    "text": "el",
+    "startMs": 49180,
+    "endMs": 49280
+  },
+  {
+    "text": "entrenamiento,",
+    "startMs": 49280,
+    "endMs": 49900
+  },
+  {
+    "text": "puede",
+    "startMs": 50180,
+    "endMs": 50440
+  },
+  {
+    "text": "potenciar",
+    "startMs": 50440,
+    "endMs": 51180
+  },
+  {
+    "text": "sus",
+    "startMs": 51180,
+    "endMs": 51320
+  },
+  {
+    "text": "resultados.",
+    "startMs": 51320,
+    "endMs": 51780
+  }
+]
