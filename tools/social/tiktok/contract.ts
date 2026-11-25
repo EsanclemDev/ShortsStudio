@@ -1,0 +1,8 @@
+import {createHash} from 'node:crypto';
+export const challenge=(v:string)=>createHash('sha256').update(v).digest('hex');
+export function chunks(bytes:number){if(!Number.isSafeInteger(bytes)||bytes<=0||bytes>4_000_000_000)throw Error('Invalid video size');const size=Math.min(bytes,32_000_000);return {size,count:Math.floor(bytes/size)};}
+export function parseArgs(args:string[]){const [cmd,...rest]=args;if(!['connect','publish','resume','retry','status','list','stats','history'].includes(cmd))throw Error('Unknown TikTok command');if(['publish','resume','retry'].includes(cmd)){if(rest.length!==2||!rest[0]||rest[0].startsWith('--')||!['--dry-run','--confirm'].includes(rest[1]))throw Error('Usage: publish <folder> --dry-run | --confirm');return {cmd,folder:rest[0],dry:rest[1]==='--dry-run'};}if(cmd==='status'){if(rest.length!==1||rest[0].startsWith('--'))throw Error('Usage: status <folder>');return {cmd,folder:rest[0],dry:false};}if(rest.length)throw Error('Unexpected arguments');return {cmd,folder:undefined,dry:false};}
+
+export function uploadUrl(raw:string){const u=new URL(raw);if(u.protocol!=='https:'||u.username||u.password||u.port||!['open-upload.tiktokapis.com','upload.us.tiktokapis.com','open-upload-i18n.tiktokapis.com'].includes(u.hostname))throw Error('Unexpected upload host: '+u.hostname);return u;}
+export function resumeIndex(bytes:number,total:number,size:number,count:number){if(!Number.isSafeInteger(bytes)||bytes<0||bytes>=total||bytes%size!==0||bytes/size>=count)throw Error('Remote offset is not a resumable chunk boundary');return bytes/size;}
+export function canRetry(status:unknown){return status==='FAILED';}
