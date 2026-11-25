@@ -32,6 +32,7 @@
     "@types/react-dom": "^19.3.0",
     "@types/three": "0.170.0",
     "@types/web": "0.0.166",
+    "electron": "^45.5.0",
     "eslint": "10.15.0",
     "prettier": "3.8.1",
     "tsx": "^4.23.15",
@@ -74,7 +75,9 @@
     "social:instagram:resume": "node tools/social/instagram/cli.mjs resume",
     "social:instagram:schedule": "node tools/social/instagram/cli.mjs schedule",
     "social:instagram:run-due": "node tools/social/instagram/cli.mjs run-due",
-    "social:instagram:test": "node tools/social/instagram/smoke.mjs"
+    "social:instagram:test": "node tools/social/instagram/smoke.mjs",
+    "desktop": "electron desktop/main.cjs",
+    "desktop:test": "node --test desktop/store.test.cjs"
   },
   "allowScripts": {
     "esbuild": false

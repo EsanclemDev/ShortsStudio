@@ -1,0 +1,1 @@
+const {contextBridge,ipcRenderer}=require('electron');contextBridge.exposeInMainWorld('studio',{state:()=>ipcRenderer.invoke('studio:state'),refresh:()=>ipcRenderer.invoke('studio:refresh'),saveBrand:v=>ipcRenderer.invoke('studio:brand',v),open:id=>ipcRenderer.invoke('studio:open',id)});
