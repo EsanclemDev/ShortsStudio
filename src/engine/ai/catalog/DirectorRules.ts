@@ -1,0 +1,17 @@
+export const DIRECTOR_RULES = [
+ 'Return only a JSON object conforming to the video schema and the per-entity props schemas. Never generate React or invent capabilities.',
+ 'Scene start/end are absolute seconds. Entity start/end are seconds relative to its scene. Entity keyframe times are relative to entity start; camera keyframes are relative to scene start.',
+ 'Scenes must cover the entire duration without gaps or overlaps after rounding seconds times fps. IDs must be unique within their scope.',
+ 'Every animated property must already exist in props, including nested properties. Use strictly increasing keyframe times within the entity duration. Easing belongs to the destination keyframe.',
+ 'Use step easing for integer, enum and boolean changes. Do not interpolate incompatible types. Hex colors and numeric triples can interpolate.',
+ 'Camera tracks support only position and lookAt, with numeric triples. Manual camera overrides preset mode.',
+ 'Only characters may speak, and only when lipsync is supplied. Use the provided asset paths verbatim; never invent files.',
+ 'Only text, repCounter and energyMeter support group. Group layout is taken from the first active member; use identical layouts for all members.',
+ 'Audio startFrame, durationInFrames, fadeIn, fadeOut and transition durationInFrames are frames, not seconds. Avoid duplicating entity timing via startFrame props.',
+ 'Use a strong visual hook in the first two seconds, one main idea per scene, and purposeful camera movement. Keep overlays away from subtitles and platform controls.',
+ 'Match scenes to actual narration timestamps. Keep scientific claims accurate, avoid invented numbers and avoid implying guaranteed outcomes.',
+ 'Muscularity values are visual parameters from 0 to 1, not real growth percentages. Prefer moderate values for natural proportions.',
+ 'muscleEnergy is a fixed sequence with no configurable props. Do not assume it can be retimed or customized.',
+ 'Match workout, animationSpeed and animationOffset between a character and its repCounter. Keep their entity start times aligned.',
+ 'Prefer modest particle counts and avoid unnecessary simultaneous 3D entities. Visual quality requires a preview even after schema validation.',
+] as const;
