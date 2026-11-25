@@ -16,6 +16,7 @@ steps.push({name:'repair-retry-smoke',file:'tools/ai/repair-retry-smoke.mjs',arg
 steps.push({name:'social-schema-smoke',file:'tools/social/social-smoke.ts',args:['--yes','tsx','tools/social/social-smoke.ts']});
 steps.push({name:'social-management-smoke',file:'tools/social/management-smoke.ts',args:['--yes','tsx','tools/social/management-smoke.ts']});
 steps.push({name:'tiktok-recovery-smoke',file:'tools/social/tiktok/smoke.ts',args:['--yes','tsx','tools/social/tiktok/smoke.ts']});
+steps.push({name:'instagram-smoke',file:'tools/social/instagram/smoke.mjs',args:['tools/social/instagram/smoke.mjs'],native:true});
 const results=[];const started=Date.now();
 for(const [i,s] of steps.entries()){
  console.log(`\n[${i+1}/${steps.length}] ${s.name}`);
