@@ -16,6 +16,7 @@
     "@remotion/media": "4.0.546",
     "@remotion/three": "4.0.546",
     "@remotion/zod-types": "4.0.546",
+    "googleapis": "^190.0.0",
     "mediabunny": "1.66.0",
     "postprocessing": "6.37.8",
     "react": "19.3.1",
@@ -33,6 +34,7 @@
     "@types/web": "0.0.166",
     "eslint": "10.15.0",
     "prettier": "3.8.1",
+    "tsx": "^4.23.15",
     "typescript": "5.9.3"
   },
   "scripts": {
@@ -42,7 +44,18 @@
     "lint": "eslint src && tsc",
     "lipsync": ".venv/Scripts/python.exe tools/audio/generate_lipsync.py",
     "generate:sfx": ".venv/Scripts/python.exe tools/audio/generate_sfx.py",
-    "generate:music": ".venv/Scripts/python.exe tools/audio/generate_music.py"
+    "generate:music": ".venv/Scripts/python.exe tools/audio/generate_music.py",
+    "social:connect": "tsx tools/social/connect.ts",
+    "social:publish": "tsx tools/social/publish.ts",
+    "social:status": "tsx tools/social/status.ts",
+    "social:test": "tsx tools/social/social-smoke.ts",
+    "social:visibility": "tsx tools/social/visibility.ts",
+    "social:schedule": "tsx tools/social/schedule.ts",
+    "social:update": "tsx tools/social/update.ts",
+    "social:list": "tsx tools/social/list.ts",
+    "social:stats": "tsx tools/social/stats.ts",
+    "social:history": "tsx tools/social/history.ts",
+    "social:test-management": "tsx tools/social/management-smoke.ts"
   },
   "allowScripts": {
     "esbuild": false
