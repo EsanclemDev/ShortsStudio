@@ -55,7 +55,16 @@
     "social:list": "tsx tools/social/list.ts",
     "social:stats": "tsx tools/social/stats.ts",
     "social:history": "tsx tools/social/history.ts",
-    "social:test-management": "tsx tools/social/management-smoke.ts"
+    "social:test-management": "tsx tools/social/management-smoke.ts",
+    "social:tiktok:connect": "tsx tools/social/tiktok/cli.ts connect",
+    "social:tiktok:publish": "tsx tools/social/tiktok/cli.ts publish",
+    "social:tiktok:status": "tsx tools/social/tiktok/cli.ts status",
+    "social:tiktok:list": "tsx tools/social/tiktok/cli.ts list",
+    "social:tiktok:stats": "tsx tools/social/tiktok/cli.ts stats",
+    "social:tiktok:history": "tsx tools/social/tiktok/cli.ts history",
+    "social:tiktok:test": "tsx tools/social/tiktok/smoke.ts",
+    "social:tiktok:resume": "tsx tools/social/tiktok/cli.ts resume",
+    "social:tiktok:retry": "tsx tools/social/tiktok/cli.ts retry"
   },
   "allowScripts": {
     "esbuild": false

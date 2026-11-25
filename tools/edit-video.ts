@@ -2,6 +2,12 @@ import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {validateVideo} from '../src/engine/director/VideoValidator';
 
+function isVec3(value: unknown): value is [number, number, number] {
+ return Array.isArray(value)
+  && value.length === 3
+  && value.every(x => typeof x === 'number' && Number.isFinite(x));
+}
+
 // Paths are relative to entity.props, or to scene.camera with --camera.
 const [input,command,...args]=process.argv.slice(2);
 const options=new Map<string,string>();
@@ -26,7 +32,7 @@ try {
  if(!camera&&!options.has('entity')&&!options.has('type'))throw Error('Select --entity or --type explicitly');
  const parts=path.split('.');if(parts.some(p=>! /^[A-Za-z_][A-Za-z0-9_]*$/.test(p)||['__proto__','constructor','prototype','tracks','component','normalization','componentId','version','animationId'].includes(p)))throw Error('Unsafe or protected property path');
  if(camera&&!['position','lookAt'].includes(path))throw Error('Camera supports position and lookAt');
- const value=JSON.parse(valueText);if(!(typeof value==='string'||typeof value==='boolean'||typeof value==='number'&&Number.isFinite(value)||Array.isArray(value)&&value.length===3&&value.every(x=>typeof x==='number'&&Number.isFinite(x))))throw Error('Expected string, boolean, finite number or vec3');
+ const value=JSON.parse(valueText);if(!(typeof value==='string'||typeof value==='boolean'||typeof value==='number'&&Number.isFinite(value)||isVec3(value)))throw Error('Expected string, boolean, finite number or vec3');
  if(/Color$|^color$/.test(parts.at(-1)!)&&(typeof value!=='string'||!/^#[0-9a-f]{6}$/i.test(value)))throw Error('Use #RRGGBB color');
  const policy=options.get('tracks')??'reject';if(!['reject','all'].includes(policy))throw Error('Use --tracks=reject or --tracks=all');
  for(const t of targets){

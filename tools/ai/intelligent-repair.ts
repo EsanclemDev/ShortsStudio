@@ -11,7 +11,7 @@ import {resolve,dirname,join} from 'node:path';
 import {isDeepStrictEqual} from 'node:util';
 import assert from 'node:assert/strict';
 import {validateVideo} from '../../src/engine/director/VideoValidator';
-import {creativeCatalog,CREATIVE_RULES,inspectBeats,registerCreativeAssets} from '../../src/engine/ai/creative/CreativeIntelligence';
+import {CREATIVE_RULES,inspectBeats,registerCreativeAssets} from '../../src/engine/ai/creative/CreativeIntelligence';
 import {hydrateComponents} from '../../src/engine/components/DirectorComponentIntegration';
 import {ComponentRegistry} from '../../src/engine/components/ComponentRegistry';
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));

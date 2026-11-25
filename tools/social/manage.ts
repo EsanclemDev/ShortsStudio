@@ -1,4 +1,4 @@
-import {read,save,run,validate} from './core';
+import {read,save,validate} from './core';
 import {authorized} from './auth';
 import {resolve} from 'node:path';
 import {appendFile} from 'node:fs/promises';
