@@ -64,7 +64,17 @@
     "social:tiktok:history": "tsx tools/social/tiktok/cli.ts history",
     "social:tiktok:test": "tsx tools/social/tiktok/smoke.ts",
     "social:tiktok:resume": "tsx tools/social/tiktok/cli.ts resume",
-    "social:tiktok:retry": "tsx tools/social/tiktok/cli.ts retry"
+    "social:tiktok:retry": "tsx tools/social/tiktok/cli.ts retry",
+    "social:instagram:connect": "node tools/social/instagram/cli.mjs connect",
+    "social:instagram:publish": "node tools/social/instagram/cli.mjs publish",
+    "social:instagram:status": "node tools/social/instagram/cli.mjs status",
+    "social:instagram:list": "node tools/social/instagram/cli.mjs list",
+    "social:instagram:stats": "node tools/social/instagram/cli.mjs stats",
+    "social:instagram:history": "node tools/social/instagram/cli.mjs history",
+    "social:instagram:resume": "node tools/social/instagram/cli.mjs resume",
+    "social:instagram:schedule": "node tools/social/instagram/cli.mjs schedule",
+    "social:instagram:run-due": "node tools/social/instagram/cli.mjs run-due",
+    "social:instagram:test": "node tools/social/instagram/smoke.mjs"
   },
   "allowScripts": {
     "esbuild": false
