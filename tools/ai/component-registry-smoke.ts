@@ -1,0 +1,7 @@
+import assert from 'node:assert/strict';
+import {mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {ComponentRegistry} from '../../src/engine/components/ComponentRegistry';
+async function main(){const root=await mkdtemp(join(tmpdir(),'ss-reg-'));try{const r=new ComponentRegistry(root);const c={schemaVersion:1,id:'test',version:1,name:'Test',description:'Test component',category:'object',dimension:'3d',parts:[{id:'body',geometry:{type:'sphere',radius:1},material:{color:'#ff0000'}}]};const saved=await r.registerComponent(c);await r.registerComponent(c);assert.deepEqual(await r.getComponent('test',1),saved);await assert.rejects(r.registerComponent({...c,name:'Changed'}),/conflict/);await assert.rejects(r.getComponent('../escape',1),/Invalid/);const a={schemaVersion:1,id:'pulse',componentId:'test',componentVersion:1,duration:1,loop:true,tracks:[{partId:'body',property:'scale',keyframes:[{time:0,value:[1,1,1]},{time:1,value:[1,1,1]}]}]};const animation=await r.registerAnimation(a,'test',1);assert.deepEqual(await r.getAnimation('test',1,'pulse'),animation);await assert.rejects(r.registerAnimation({...a,componentVersion:2},'test',1),/mismatch/);assert.deepEqual((await r.list())[0].animations,['pulse']);console.log('Component registry smoke test OK');}finally{await rm(root,{recursive:true,force:true});}}
+void main().catch(e=>{console.error(e);process.exitCode=1;});

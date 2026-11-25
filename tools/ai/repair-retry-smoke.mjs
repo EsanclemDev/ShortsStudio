@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {requestWithRetry,parseReply} from './repair-retry.mjs';
+const test=async(statuses,body='',headers={})=>{let calls=0;const waits=[];let error;try{await requestWithRetry(async()=>new Response(body,{status:statuses[calls++],headers}),{sleep:async ms=>waits.push(ms),log:()=>{}});}catch(e){error=e;}return {calls,waits,error};};
+let r=await test([503,503,503,200]);assert.deepEqual(r.waits,[15000,30000,60000]);assert.equal(r.error,undefined);
+r=await test([503,503,503,503]);assert.equal(r.calls,4);assert.match(r.error.message,/503/);
+r=await test([429,200],'',{'Retry-After':'45'});assert.deepEqual(r.waits,[45000]);
+r=await test([429],'requests per day');assert.equal(r.calls,1);
+r=await test([404]);assert.equal(r.calls,1);
+r=await test([429],'',{'Retry-After':'3600'});assert.equal(r.calls,1);
+assert.deepEqual(parseReply('```json\n{"a":1}\n```'),{a:1});assert.throws(()=>parseReply('{broken'));
+console.log('Retry and JSON smoke: 8 scenarios OK');

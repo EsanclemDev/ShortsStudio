@@ -1,4 +1,5 @@
 import React from "react";
+import {GeneratedEntity} from "../../components/GeneratedEntity";
 import type {EntityConfig} from "../VideoTypes";
 import {entityProps} from "../schemas/EntitySchema";
 import {Character3D} from "../../characters/Character3D";
@@ -26,6 +27,7 @@ function entry<P extends object>(layer: Entry["layer"], Component: React.Compone
 const TextOverlay: React.FC<{text:string;color?:string;fontSize?:number}> = ({text,color="white",fontSize=72}) => <div style={{width:"100%",textAlign:"center",fontFamily:"Arial",fontWeight:900,fontSize,color,whiteSpace:"pre-line",textShadow:"0 4px 10px black"}}>{text}</div>;
 const Primitive:React.FC<ReturnType<typeof entityProps.primitive.parse>>=({shape,position,rotation,dimensions=[1,1,1],radius=.2,color='#ffffff'})=><mesh position={position} rotation={rotation}>{shape==='box'?<boxGeometry args={dimensions}/>:<sphereGeometry args={[radius,20,16]}/>}<meshStandardMaterial color={color}/></mesh>;
 export const ENTITY_REGISTRY: Record<EntityConfig["type"], Entry> = {
+  generated: entry("world", GeneratedEntity, input => entityProps.generated.parse(input)),
   primitive: entry("world", Primitive, input => entityProps.primitive.parse(input)),
   character: entry("world", Character3D, input => entityProps.character.parse(input)),
   object: entry("world", Object3D, input => entityProps.object.parse(input)),

@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "id": "gum-intestine-cutaway",
+  "version": 1,
+  "name": "Intestino en sección",
+  "description": "Intestino en sección — modelo didáctico reutilizable",
+  "category": "anatomy",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "back",
+      "geometry": {
+        "type": "box",
+        "size": [
+          1.5,
+          3.8,
+          0.25
+        ]
+      },
+      "material": {
+        "color": "#A83D56",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        -0.36
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "wall-0-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.72,
+        1.55,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-0-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.72,
+        1.55,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-1-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.72,
+        0.93,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-1-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.72,
+        0.93,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-2-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.72,
+        0.31000000000000005,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-2-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.72,
+        0.31000000000000005,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-3-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.72,
+        -0.30999999999999983,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-3-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.72,
+        -0.30999999999999983,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-4-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.72,
+        -0.9299999999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-4-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.72,
+        -0.9299999999999999,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-5-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.72,
+        -1.55,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    },
+    {
+      "id": "wall-5-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F19A9E",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.72,
+        -1.55,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.29,
+        0.43,
+        0.38
+      ]
+    }
+  ]
+}

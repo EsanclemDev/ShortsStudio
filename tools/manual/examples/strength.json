@@ -1,0 +1,831 @@
+{
+  "schemaVersion": 1,
+  "id": "004-strength",
+  "title": "¿Por qué tu compañero levanta 100 kg y tú no puedes con 90?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "duration": 44.833333333333336,
+  "audio": {
+    "voice": {
+      "src": "audio/director/004-strength/voice.mp3",
+      "volume": 1,
+      "startFrame": 0,
+      "loop": false
+    },
+    "effects": []
+  },
+  "subtitles": {
+    "src": "audio/director/004-strength/captions.json",
+    "style": "highlight",
+    "wordsPerGroup": 3,
+    "fontSize": 48,
+    "color": "#FFFFFF",
+    "activeColor": "#FACC15",
+    "bottom": 120,
+    "uppercase": true
+  },
+  "scenes": [
+    {
+      "id": "scene-1",
+      "start": 0,
+      "end": 4.4,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3.3,
+          9
+        ],
+        "lookAt": [
+          0,
+          2.6,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "short",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-short-arms",
+            "version": 1,
+            "position": [
+              0,
+              3.0,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "long",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-long-arms",
+            "version": 1,
+            "position": [
+              0,
+              0.2,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "100 KG vs 90 KG",
+            "color": "#FACC15",
+            "fontSize": 86
+          },
+          "layout": {
+            "top": 100,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "a",
+          "type": "text",
+          "props": {
+            "text": "100 KG",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 310,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "props": {
+            "text": "90 KG",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1050,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-2",
+      "start": 4.4,
+      "end": 7.8,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3,
+          8
+        ],
+        "lookAt": [
+          0,
+          2.5,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "host",
+          "type": "character",
+          "props": {
+            "position": [
+              0,
+              2.2,
+              0
+            ],
+            "size": 3,
+            "action": "surprised",
+            "billboard": true,
+            "appearance": {
+              "shirtColor": "#DC2626",
+              "skinColor": "#E0AC69"
+            }
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "¿MÁS FUERTE?",
+            "color": "#FACC15",
+            "fontSize": 92
+          },
+          "layout": {
+            "top": 180,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "note",
+          "type": "text",
+          "props": {
+            "text": "Depende del ejercicio",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1200,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-3",
+      "start": 7.8,
+      "end": 11.2,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3.3,
+          9
+        ],
+        "lookAt": [
+          0,
+          2.6,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "short",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-short-arms",
+            "version": 1,
+            "position": [
+              0,
+              3.0,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "long",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-long-arms",
+            "version": 1,
+            "position": [
+              0,
+              0.2,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "LA LONGITUD IMPORTA",
+            "color": "#FACC15",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 100,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "a",
+          "type": "text",
+          "props": {
+            "text": "BRAZOS CORTOS",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 310,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "props": {
+            "text": "BRAZOS LARGOS",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1050,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-4",
+      "start": 11.2,
+      "end": 17.8,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3.3,
+          9
+        ],
+        "lookAt": [
+          0,
+          2.6,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "short",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-short-arms",
+            "version": 1,
+            "position": [
+              0,
+              3.0,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "long",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-long-arms",
+            "version": 1,
+            "position": [
+              0,
+              0.2,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "DISTANCIA DE LA BARRA",
+            "color": "#FACC15",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 100,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "a",
+          "type": "text",
+          "props": {
+            "text": "MENOR RECORRIDO",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 310,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "props": {
+            "text": "MAYOR RECORRIDO",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1050,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "arrow-a",
+          "type": "arrow",
+          "props": {
+            "from": [
+              1.5,
+              4,
+              0
+            ],
+            "to": [
+              1.5,
+              4.75,
+              0
+            ],
+            "color": "#22C55E",
+            "thickness": 0.05
+          }
+        },
+        {
+          "id": "arrow-b",
+          "type": "arrow",
+          "props": {
+            "from": [
+              1.5,
+              1.2,
+              0
+            ],
+            "to": [
+              1.5,
+              2.3,
+              0
+            ],
+            "color": "#FACC15",
+            "thickness": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-5",
+      "start": 17.8,
+      "end": 21.7,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3,
+          8
+        ],
+        "lookAt": [
+          0,
+          2.5,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "athlete",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-short-arms",
+            "version": 1,
+            "position": [
+              0,
+              1.3,
+              0
+            ],
+            "rotation": [
+              0,
+              0.8,
+              0
+            ],
+            "scale": 1.6,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "NO SOLO SON PALANCAS",
+            "color": "#FACC15",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 120,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "tech",
+          "type": "text",
+          "props": {
+            "text": "TÉCNICA",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1250,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-6",
+      "start": 21.7,
+      "end": 28.8,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3,
+          8
+        ],
+        "lookAt": [
+          0,
+          2.5,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "brain",
+          "type": "anatomy",
+          "props": {
+            "type": "brain",
+            "position": [
+              0,
+              4,
+              0
+            ],
+            "scale": 1.2,
+            "animation": "static"
+          }
+        },
+        {
+          "id": "neuron",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-neuron",
+            "version": 1,
+            "position": [
+              0,
+              2.5,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 1.1,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "fiber",
+          "type": "micro",
+          "props": {
+            "type": "muscleFiber",
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "scale": 1.1,
+            "animation": "pulse"
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "ACTIVACIÓN MUSCULAR",
+            "color": "#FACC15",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 110,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "note",
+          "type": "text",
+          "props": {
+            "text": "Sistema nervioso",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1250,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-7",
+      "start": 28.8,
+      "end": 36.1,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3,
+          8
+        ],
+        "lookAt": [
+          0,
+          2.5,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "banana",
+          "type": "object",
+          "props": {
+            "type": "banana",
+            "position": [
+              -0.8,
+              4,
+              0
+            ],
+            "scale": 1.1,
+            "animation": "float"
+          }
+        },
+        {
+          "id": "apple",
+          "type": "object",
+          "props": {
+            "type": "apple",
+            "position": [
+              0.8,
+              4,
+              0
+            ],
+            "scale": 1.1,
+            "animation": "float"
+          }
+        },
+        {
+          "id": "fiber",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-glycogen",
+            "version": 1,
+            "position": [
+              0,
+              2,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 1.4
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "CARBOHIDRATOS",
+            "color": "#FACC15",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 130,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "note",
+          "type": "text",
+          "props": {
+            "text": "Reservas de glucógeno",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1200,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-8",
+      "start": 36.1,
+      "end": 44.833333333333336,
+      "presentation": "clean",
+      "environment": "studio",
+      "camera": {
+        "position": [
+          0,
+          3.3,
+          9
+        ],
+        "lookAt": [
+          0,
+          2.6,
+          0
+        ]
+      },
+      "transition": {
+        "type": "none"
+      },
+      "entities": [
+        {
+          "id": "short",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-short-arms",
+            "version": 1,
+            "position": [
+              0,
+              3.0,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "long",
+          "type": "generated",
+          "props": {
+            "componentId": "strength-long-arms",
+            "version": 1,
+            "position": [
+              0,
+              0.2,
+              0
+            ],
+            "rotation": [
+              0,
+              0.65,
+              0
+            ],
+            "scale": 1.05,
+            "animationId": "motion"
+          }
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "props": {
+            "text": "MISMO PESO",
+            "color": "#FACC15",
+            "fontSize": 90
+          },
+          "layout": {
+            "top": 100,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "a",
+          "type": "text",
+          "props": {
+            "text": "DISTINTAS PALANCAS",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 310,
+            "left": 65,
+            "right": 65
+          }
+        },
+        {
+          "id": "b",
+          "type": "text",
+          "props": {
+            "text": "DISTINTOS RETOS",
+            "color": "#FFFFFF",
+            "fontSize": 72
+          },
+          "layout": {
+            "top": 1050,
+            "left": 65,
+            "right": 65
+          }
+        }
+      ]
+    }
+  ]
+}

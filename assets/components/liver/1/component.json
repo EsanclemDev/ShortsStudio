@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "id": "liver",
+  "version": 1,
+  "name": "Hígado humano",
+  "description": "Modelo anatómico 3D del hígado humano mostrando los lóbulos derecho e izquierdo, la vesícula biliar y los vasos principales.",
+  "category": "anatomy",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "liver-body",
+      "geometry": {
+        "type": "organic",
+        "rings": [
+          {
+            "x": -1.8,
+            "y": 0.2,
+            "z": 0,
+            "radiusY": 0.05,
+            "radiusZ": 0.05
+          },
+          {
+            "x": -1.2,
+            "y": 0.35,
+            "z": 0.1,
+            "radiusY": 0.4,
+            "radiusZ": 0.25
+          },
+          {
+            "x": -0.4,
+            "y": 0.45,
+            "z": 0.2,
+            "radiusY": 0.6,
+            "radiusZ": 0.45
+          },
+          {
+            "x": 0.4,
+            "y": 0.3,
+            "z": 0.1,
+            "radiusY": 1,
+            "radiusZ": 0.8
+          },
+          {
+            "x": 1.2,
+            "y": -0.1,
+            "z": -0.1,
+            "radiusY": 1.2,
+            "radiusZ": 1
+          },
+          {
+            "x": 1.8,
+            "y": -0.4,
+            "z": -0.3,
+            "radiusY": 0.1,
+            "radiusZ": 0.1
+          }
+        ]
+      },
+      "material": {
+        "color": "#8B3A3A",
+        "roughness": 0.45,
+        "metalness": 0.05,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "parentId": "liver-body",
+      "geometry": {
+        "type": "organic",
+        "rings": [
+          {
+            "x": 0.5,
+            "y": -0.3,
+            "z": 0.4,
+            "radiusY": 0.05,
+            "radiusZ": 0.05
+          },
+          {
+            "x": 0.7,
+            "y": -0.5,
+            "z": 0.6,
+            "radiusY": 0.15,
+            "radiusZ": 0.15
+          },
+          {
+            "x": 1,
+            "y": -0.65,
+            "z": 0.75,
+            "radiusY": 0.22,
+            "radiusZ": 0.22
+          },
+          {
+            "x": 1.2,
+            "y": -0.7,
+            "z": 0.8,
+            "radiusY": 0.05,
+            "radiusZ": 0.05
+          }
+        ]
+      },
+      "material": {
+        "color": "#4A5D23",
+        "roughness": 0.3,
+        "metalness": 0.1,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "portal-vein",
+      "parentId": "liver-body",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0.2,
+            -0.1,
+            0.3
+          ],
+          [
+            0.2,
+            -0.6,
+            0.6
+          ],
+          [
+            0.1,
+            -1.2,
+            0.9
+          ]
+        ],
+        "radius": 0.09
+      },
+      "material": {
+        "color": "#3B5998",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "hepatic-artery",
+      "parentId": "liver-body",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0.4,
+            -0.1,
+            0.3
+          ],
+          [
+            0.5,
+            -0.7,
+            0.5
+          ],
+          [
+            0.6,
+            -1.2,
+            0.7
+          ]
+        ],
+        "radius": 0.05
+      },
+      "material": {
+        "color": "#B22222",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "inferior-vena-cava",
+      "parentId": "liver-body",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.15,
+        "radiusBottom": 0.15,
+        "height": 1.5
+      },
+      "material": {
+        "color": "#2B4F81",
+        "roughness": 0.4,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.6,
+        0.2,
+        -0.6
+      ],
+      "rotation": [
+        1.57,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

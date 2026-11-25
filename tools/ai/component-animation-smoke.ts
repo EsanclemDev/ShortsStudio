@@ -1,0 +1,5 @@
+import assert from 'node:assert/strict';
+import {validateComponent} from '../../src/engine/components/ComponentSchema';
+import {validateAnimation,sampleAnimation} from '../../src/engine/components/ComponentAnimation';
+const c=validateComponent({schemaVersion:1,id:'test',version:1,name:'Test',description:'Test',category:'other',dimension:'3d',parts:[{id:'body',geometry:{type:'sphere',radius:1},material:{color:'#ffffff'}}]});
+const raw={schemaVersion:1,componentId:'test',componentVersion:1,id:'pulse',duration:2,loop:true,tracks:[{partId:'body',property:'scale',keyframes:[{time:0,value:[1,1,1]},{time:1,value:[2,2,2]},{time:2,value:[1,1,1]}]}]};const a=validateAnimation(raw,c);assert.deepEqual(sampleAnimation(c,a,0.5).parts[0].scale,[1.5,1.5,1.5]);assert.deepEqual(sampleAnimation(c,a,2.5).parts[0].scale,[1.5,1.5,1.5]);assert.deepEqual(c.parts[0].scale,[1,1,1]);assert.throws(()=>validateAnimation({...raw,componentVersion:2},c));assert.throws(()=>validateAnimation({...raw,tracks:[{...raw.tracks[0],partId:'missing'}]},c));console.log('Component animation smoke test OK');

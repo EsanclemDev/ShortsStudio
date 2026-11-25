@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 1,
+  "id": "pasta",
+  "version": 1,
+  "name": "Plato de pasta",
+  "description": "Plato blanco con espaguetis amarillos tridimensionales, utilizando tubos curvos entrelazados y formas naturales.",
+  "category": "object",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "plate-base",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 1.5,
+        "radiusBottom": 1.2,
+        "height": 0.15
+      },
+      "material": {
+        "color": "#fdfefe",
+        "roughness": 0.2,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "spaghetti-1",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0.8,
+            0.1,
+            0.2
+          ],
+          [
+            0.4,
+            0.3,
+            0.6
+          ],
+          [
+            -0.2,
+            0.5,
+            0.3
+          ],
+          [
+            -0.6,
+            0.3,
+            -0.4
+          ],
+          [
+            -0.1,
+            0.1,
+            -0.8
+          ]
+        ],
+        "radius": 0.04
+      },
+      "material": {
+        "color": "#f4d03f",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.08,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "spaghetti-2",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            -0.7,
+            0.1,
+            0.4
+          ],
+          [
+            -0.3,
+            0.4,
+            -0.2
+          ],
+          [
+            0.2,
+            0.6,
+            0.1
+          ],
+          [
+            0.7,
+            0.3,
+            0.5
+          ],
+          [
+            0.5,
+            0.1,
+            -0.3
+          ]
+        ],
+        "radius": 0.04
+      },
+      "material": {
+        "color": "#f4d03f",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.08,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "spaghetti-3",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0.1,
+            0.1,
+            -0.9
+          ],
+          [
+            -0.5,
+            0.3,
+            -0.5
+          ],
+          [
+            -0.1,
+            0.7,
+            0
+          ],
+          [
+            0.6,
+            0.4,
+            0.2
+          ],
+          [
+            0.3,
+            0.1,
+            0.7
+          ]
+        ],
+        "radius": 0.04
+      },
+      "material": {
+        "color": "#f1c40f",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.08,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "spaghetti-4",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            -0.4,
+            0.1,
+            -0.6
+          ],
+          [
+            0.2,
+            0.5,
+            -0.4
+          ],
+          [
+            0.5,
+            0.4,
+            0.3
+          ],
+          [
+            0,
+            0.6,
+            0.6
+          ],
+          [
+            -0.6,
+            0.1,
+            0.2
+          ]
+        ],
+        "radius": 0.04
+      },
+      "material": {
+        "color": "#f4d03f",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.08,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "spaghetti-5",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0,
+            0.8,
+            0
+          ],
+          [
+            0.3,
+            0.5,
+            -0.3
+          ],
+          [
+            -0.4,
+            0.4,
+            -0.5
+          ],
+          [
+            -0.7,
+            0.2,
+            0.1
+          ],
+          [
+            0,
+            0.1,
+            0.4
+          ]
+        ],
+        "radius": 0.04
+      },
+      "material": {
+        "color": "#f1c40f",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.08,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "spaghetti-6",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0.5,
+            0.1,
+            0.5
+          ],
+          [
+            -0.2,
+            0.3,
+            0.8
+          ],
+          [
+            -0.6,
+            0.5,
+            0.2
+          ],
+          [
+            0.1,
+            0.4,
+            -0.6
+          ],
+          [
+            0.8,
+            0.1,
+            -0.2
+          ]
+        ],
+        "radius": 0.04
+      },
+      "material": {
+        "color": "#f4d03f",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.08,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "componentId": "strength-neuron",
+  "componentVersion": 1,
+  "id": "motion",
+  "duration": 2.4,
+  "loop": true,
+  "tracks": [
+    {
+      "partId": "signal",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0.0,
+          "value": [
+            -0.8,
+            0,
+            0.14
+          ],
+          "easing": "linear"
+        },
+        {
+          "time": 0.7999999999999999,
+          "value": [
+            0,
+            0,
+            0.14
+          ],
+          "easing": "linear"
+        },
+        {
+          "time": 1.5999999999999999,
+          "value": [
+            1.2,
+            0,
+            0.14
+          ],
+          "easing": "linear"
+        },
+        {
+          "time": 2.4,
+          "value": [
+            -0.8,
+            0,
+            0.14
+          ],
+          "easing": "linear"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "id": "gum-calendar",
+  "version": 1,
+  "name": "Calendario",
+  "description": "Calendario — modelo didáctico reutilizable",
+  "category": "diagram",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "paper",
+      "geometry": {
+        "type": "box",
+        "size": [
+          2.2,
+          1.8,
+          0.18
+        ]
+      },
+      "material": {
+        "color": "#FFF7ED",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "header",
+      "geometry": {
+        "type": "box",
+        "size": [
+          2.2,
+          0.5,
+          0.12
+        ]
+      },
+      "material": {
+        "color": "#DC2626",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.65,
+        0.12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "ring-2",
+      "geometry": {
+        "type": "torus",
+        "radius": 0.16,
+        "tube": 0.055
+      },
+      "material": {
+        "color": "#475569",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.7,
+        0.9,
+        0.1
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "ring-3",
+      "geometry": {
+        "type": "torus",
+        "radius": 0.16,
+        "tube": 0.055
+      },
+      "material": {
+        "color": "#475569",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.7,
+        0.9,
+        0.1
+      ],
+      "rotation": [
+        0,
+        1.5707963267948966,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-4",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.75,
+        -0.5,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-5",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.25,
+        -0.5,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-6",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.25,
+        -0.5,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-7",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.75,
+        -0.5,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-8",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.75,
+        -0.1,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-9",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.25,
+        -0.1,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-10",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.25,
+        -0.1,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-11",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.75,
+        -0.1,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-12",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.75,
+        0.3,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-13",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.25,
+        0.3,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-14",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.25,
+        0.3,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "day-15",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.27,
+          0.23,
+          0.06
+        ]
+      },
+      "material": {
+        "color": "#CBD5E1",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.75,
+        0.3,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+import assert from 'node:assert/strict';
+import {Box3,Vector3,PerspectiveCamera} from 'three';
+import {fitCamera,composeVideo} from '../../src/engine/director/composition/SceneComposer';
+const b=new Box3(new Vector3(-4,0,-2),new Vector3(5,4,2));const fit=fitCamera(b,9/16);const camera=new PerspectiveCamera(40,9/16,.1,100);camera.position.set(...fit.position);camera.lookAt(...fit.lookAt);camera.updateMatrixWorld();for(const x of [-4,5])for(const y of [0,4])for(const z of [-2,2]){const p=new Vector3(x,y,z).project(camera);assert.ok(Math.abs(p.x)<=.78+1e-8&&Math.abs(p.y)<=.65+1e-8);}
+const raw={schemaVersion:1,id:'test',title:'Test',fps:30,width:1080,height:1920,duration:2,scenes:[{id:'s',start:0,end:2,environment:'studio',entities:[{id:'a',type:'primitive',props:{shape:'sphere',position:[3,1,0],radius:1}}]}]};const {video}=composeVideo(raw);assert.equal(video.duration,2);assert.equal(video.scenes[0].camera?.lookAt?.[0],3);assert.equal(raw.scenes[0].entities[0].props.position[0],3);console.log('Scene composition smoke test OK');

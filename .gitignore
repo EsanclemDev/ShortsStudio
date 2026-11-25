@@ -19,3 +19,10 @@ __pycache__/
 /src/shorts-engine/
 .env.*
 !.env.example
+
+# Generated production audio
+/public/audio/director/004-strength/
+/public/audio/director/005-gum/
+
+# Social Publisher credentials
+/.secrets/

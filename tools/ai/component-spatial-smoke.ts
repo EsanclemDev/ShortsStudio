@@ -1,0 +1,5 @@
+import assert from 'node:assert/strict';
+import {inspectComponent} from '../../src/engine/components/ComponentNormalizer';
+const raw={schemaVersion:1,id:'test',version:1,name:'Test',description:'Test',category:'other',dimension:'3d',parts:[{id:'body',geometry:{type:'box',size:[2,2,2]},material:{color:'#ffffff'},position:[3,4,0]},{id:'child',parentId:'body',geometry:{type:'box',size:[2,2,2]},material:{color:'#ffffff'},position:[2,0,0]}]};
+const r=inspectComponent(raw);assert.deepEqual(r.rest.min,[2,3,-1]);assert.deepEqual(r.rest.max,[6,5,1]);assert.equal(r.centered.scale,.5);assert.deepEqual(r.grounded.offset,[-2,-1.5,-0]);
+const a={schemaVersion:1,componentId:'test',componentVersion:1,id:'move',duration:1,loop:false,tracks:[{partId:'body',property:'position',keyframes:[{time:0,value:[3,4,0]},{time:1,value:[7,4,0]}]}]};const m=inspectComponent(raw,a);assert.equal(m.motion?.max[0],10);assert.equal(m.motion?.min[0],2);assert.equal(m.centered.scale,.25);assert.throws(()=>inspectComponent(raw,undefined,0));assert.throws(()=>inspectComponent(raw,{...a,componentVersion:2}));console.log('Component spatial smoke test OK');

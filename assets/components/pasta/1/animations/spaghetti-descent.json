@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "componentId": "pasta",
+  "componentVersion": 1,
+  "id": "spaghetti-descent",
+  "duration": 4,
+  "loop": false,
+  "tracks": [
+    {
+      "partId": "spaghetti-1",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.5,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0.08,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-1",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.5,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.6,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0.08,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-2",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            -0.3,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-3",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.45,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0.08,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-3",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.2,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-4",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.55,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0.08,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-4",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            -0.4,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-5",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.4,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0.08,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-5",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.1,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-6",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0.65,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0.08,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "spaghetti-6",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            -0.2,
+            0
+          ],
+          "easing": "easeOut"
+        },
+        {
+          "time": 4,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    }
+  ]
+}

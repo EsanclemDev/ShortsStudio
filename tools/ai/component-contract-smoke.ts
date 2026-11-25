@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {validateComponent,ComponentRequestSchema} from '../../src/engine/components/ComponentSchema';
+const base={schemaVersion:1,id:'test-organ',version:1,name:'Test organ',description:'Contract fixture only',category:'anatomy',dimension:'3d',parts:[{id:'body',geometry:{type:'sphere',radius:1},material:{color:'#aa3344'}},{id:'detail',parentId:'body',geometry:{type:'sphere',radius:0.2},material:{color:'#ffaa00'}}]};
+assert.equal(validateComponent(base).parts.length,2);
+assert.deepEqual(validateComponent(base).parts[0].position,[0,0,0]);
+assert.throws(()=>validateComponent({...base,code:'arbitrary code'}));
+assert.throws(()=>validateComponent({...base,dimension:'2d'}));
+assert.throws(()=>validateComponent({...base,parts:[base.parts[0],base.parts[0]]}));
+assert.throws(()=>validateComponent({...base,parts:[{...base.parts[0],parentId:'detail'},base.parts[1]]}));
+assert.throws(()=>validateComponent({...base,parts:[base.parts[1]]}));
+assert.throws(()=>validateComponent({...base,parts:[{...base.parts[0],scale:[0,1,1]}]}));
+assert.equal(ComponentRequestSchema.parse({id:'liver',name:'Liver',description:'Anatomical liver',category:'anatomy',dimension:'3d'}).id,'liver');
+console.log('Component contract smoke test OK');

@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {inspectBeats} from '../../src/engine/ai/creative/CreativeIntelligence';
+const scene={start:10,end:20,entities:[{id:'apple',start:2,tracks:[{property:'scale',keyframes:[{time:0,value:1},{time:1,value:2}]}]}]};
+const reply={scene,rationale:'test',limitations:[],newComponents:[],newAnimations:[],beats:[{time:2,intent:'appear',strategy:'reuse',entityId:'apple',event:'appear'},{time:3,intent:'grow',strategy:'compose',entityId:'apple',event:'keyframe',property:'scale'}]};
+assert.equal(inspectBeats(reply,scene,30).maxGap,7);
+assert.throws(()=>inspectBeats({...reply,beats:[{...reply.beats[1],time:5}]},scene,30),/Unimplemented beat/);
+assert.throws(()=>inspectBeats({...reply,beats:[{...reply.beats[1],time:10}]},scene,30),/outside scene/);
+assert.doesNotThrow(()=>inspectBeats({...reply,beats:[{...reply.beats[1],time:2.5}]},scene,30));
+const staticScene={...scene,entities:[{id:'apple',start:0,props:{scale:0.736}}]};
+assert.throws(()=>inspectBeats({...reply,beats:[{...reply.beats[1],time:2.5}]},staticScene,30),/Unimplemented beat/);
+console.log('Creative beat smoke OK');
