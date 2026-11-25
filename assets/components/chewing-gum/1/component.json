@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "chewing-gum",
+  "version": 1,
+  "name": "Chicle rosa",
+  "description": "Chicle rosa — modelo didáctico reutilizable",
+  "category": "object",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "gum",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#F472B6",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.65,
+        0.34,
+        0.48
+      ]
+    },
+    {
+      "id": "fold",
+      "geometry": {
+        "type": "sphere",
+        "radius": 1
+      },
+      "material": {
+        "color": "#EC4899",
+        "roughness": 0.45,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.22,
+        0.04,
+        0.12
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.35,
+        0.23,
+        0.31
+      ]
+    }
+  ]
+}

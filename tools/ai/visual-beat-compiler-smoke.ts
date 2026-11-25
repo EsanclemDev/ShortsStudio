@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {compileBeats} from '../../src/engine/ai/creative/VisualBeatCompiler';
+import {sampleTrack} from '../../src/engine/director/timeline/KeyframeEngine';
+const scene={start:29.8,end:38,entities:[{id:'char',start:0,props:{action:'idle'}},{id:'apple',start:1,props:{scale:0.736}}]};
+const beat=(time:number,op:any)=>({time,intent:'test',strategy:'compose',operations:[op]});
+const raw={scene,beats:[beat(.8,{kind:'set',entityId:'char',property:'action',value:'surprised'}),beat(3.5,{kind:'animate',entityId:'apple',property:'scale',value:.85,duration:.5})]};
+const r=compileBeats(raw);const [c,a]=r.scene.entities.map((e:any)=>e.tracks[0]);
+assert.equal(sampleTrack(c,.7),'idle');assert.equal(sampleTrack(c,.8),'surprised');assert.equal(sampleTrack(a,2.4),.736);assert.equal(sampleTrack(a,3),.85);assert.equal(r.beats[1].time,3.5);assert.equal((scene.entities[0] as any).tracks,undefined);
+assert.throws(()=>compileBeats({...raw,beats:[beat(2,{kind:'set',entityId:'char',property:'action',value:'idle'})]}),/No effective/);
+assert.throws(()=>compileBeats({...raw,beats:[beat(2,{kind:'set',entityId:'char',property:'constructor',value:'x'})]}),/Unsafe/);
+assert.throws(()=>compileBeats({...raw,beats:[{time:2}]}),/operations/);
+console.log('Visual beat compiler smoke OK');
+
+const intro={start:0,end:4.5,entities:[{id:'sugar',start:0,end:2.6,props:{scale:1.15}},{id:'char',start:0,end:4.5,props:{action:'surprised'}}]};
+const shrink=beat(1.6,{kind:'animate',entityId:'sugar',property:'scale',value:.2,duration:.8});
+const vanish=beat(2.6,{kind:'disappear',entityId:'sugar'});
+const initial=beat(0,{kind:'set',entityId:'char',property:'action',value:'surprised'});
+const fixed=compileBeats({scene:intro,beats:[initial,shrink,vanish]});
+assert.equal(fixed.scene.entities[0].end,2.6);assert.equal(fixed.beats[0].event,'initial');assert.equal(fixed.compilerWarnings.length,1);assert.equal(fixed.scene.entities[1].tracks.length,0);
+assert.throws(()=>compileBeats({scene:intro,beats:[shrink,beat(2,{kind:'disappear',entityId:'sugar'})]}),/invalidate/);
+assert.equal(compileBeats({scene:intro,beats:[shrink,beat(2.5,{kind:'disappear',entityId:'sugar'})]}).scene.entities[0].end,2.5);
+console.log('Robustness regression smoke OK');

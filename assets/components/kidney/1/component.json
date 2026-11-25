@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "id": "kidney",
+  "version": 1,
+  "name": "Riñón humano",
+  "description": "Riñón humano 3D anatómico, forma de judía, concavidad central, superficie orgánica continua y vasos renales.",
+  "category": "anatomy",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "kidney-body",
+      "geometry": {
+        "type": "organic",
+        "rings": [
+          {
+            "x": -1.2,
+            "y": -0.3,
+            "z": 0,
+            "radiusY": 0.1,
+            "radiusZ": 0.1
+          },
+          {
+            "x": -0.8,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.5,
+            "radiusZ": 0.4
+          },
+          {
+            "x": -0.4,
+            "y": 0.2,
+            "z": 0,
+            "radiusY": 0.7,
+            "radiusZ": 0.6
+          },
+          {
+            "x": 0,
+            "y": 0.25,
+            "z": 0,
+            "radiusY": 0.55,
+            "radiusZ": 0.5
+          },
+          {
+            "x": 0.4,
+            "y": 0.2,
+            "z": 0,
+            "radiusY": 0.7,
+            "radiusZ": 0.6
+          },
+          {
+            "x": 0.8,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.5,
+            "radiusZ": 0.4
+          },
+          {
+            "x": 1.2,
+            "y": -0.3,
+            "z": 0,
+            "radiusY": 0.1,
+            "radiusZ": 0.1
+          }
+        ]
+      },
+      "material": {
+        "color": "#8b2020",
+        "roughness": 0.3,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "renal-artery",
+      "parentId": "kidney-body",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0,
+            0.1,
+            0.1
+          ],
+          [
+            0,
+            0.1,
+            1.2
+          ]
+        ],
+        "radius": 0.08
+      },
+      "material": {
+        "color": "#d32f2f",
+        "roughness": 0.4,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "renal-vein",
+      "parentId": "kidney-body",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0,
+            -0.1,
+            -0.1
+          ],
+          [
+            0,
+            -0.1,
+            1.2
+          ]
+        ],
+        "radius": 0.1
+      },
+      "material": {
+        "color": "#1976d2",
+        "roughness": 0.4,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "ureter",
+      "parentId": "kidney-body",
+      "geometry": {
+        "type": "tube",
+        "points": [
+          [
+            0.1,
+            -0.05,
+            0
+          ],
+          [
+            0.4,
+            -1.5,
+            0
+          ]
+        ],
+        "radius": 0.07
+      },
+      "material": {
+        "color": "#fff59d",
+        "roughness": 0.5,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ricebowl",
+  "version": 1,
+  "name": "riceBowl",
+  "description": "Educational 3D model of a ceramic bowl filled with a mound of white rice, representing a healthy carbohydrate source.",
+  "category": "object",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "bowl-base",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.6,
+        "radiusBottom": 0.55,
+        "height": 0.1
+      },
+      "material": {
+        "color": "#f0f0f0",
+        "roughness": 0.2,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.05,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "bowl-body",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 1.2,
+        "radiusBottom": 0.6,
+        "height": 0.7
+      },
+      "material": {
+        "color": "#f0f0f0",
+        "roughness": 0.2,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.45,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "rice-mound",
+      "geometry": {
+        "type": "organic",
+        "rings": [
+          {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.8,
+            "radiusZ": 0.8
+          },
+          {
+            "x": 0.2,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.85,
+            "radiusZ": 0.85
+          },
+          {
+            "x": 0.4,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.75,
+            "radiusZ": 0.75
+          },
+          {
+            "x": 0.6,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.45,
+            "radiusZ": 0.45
+          },
+          {
+            "x": 0.75,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.05,
+            "radiusZ": 0.05
+          }
+        ]
+      },
+      "material": {
+        "color": "#ffffff",
+        "roughness": 0.9,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0.6,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        1.571
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "grain-1",
+      "geometry": {
+        "type": "capsule",
+        "radius": 0.03,
+        "length": 0.1
+      },
+      "material": {
+        "color": "#ffffff",
+        "roughness": 0.7,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.1,
+        1.2,
+        0.1
+      ],
+      "rotation": [
+        0.5,
+        0.2,
+        0.8
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "grain-2",
+      "geometry": {
+        "type": "capsule",
+        "radius": 0.03,
+        "length": 0.1
+      },
+      "material": {
+        "color": "#ffffff",
+        "roughness": 0.7,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.2,
+        1.15,
+        0.2
+      ],
+      "rotation": [
+        1.1,
+        0.9,
+        0.1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "grain-3",
+      "geometry": {
+        "type": "capsule",
+        "radius": 0.03,
+        "length": 0.1
+      },
+      "material": {
+        "color": "#ffffff",
+        "roughness": 0.7,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        1.25,
+        -0.1
+      ],
+      "rotation": [
+        0.2,
+        1.5,
+        0.3
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "grain-4",
+      "geometry": {
+        "type": "capsule",
+        "radius": 0.03,
+        "length": 0.1
+      },
+      "material": {
+        "color": "#ffffff",
+        "roughness": 0.7,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.3,
+        1.1,
+        -0.2
+      ],
+      "rotation": [
+        0.7,
+        0.1,
+        1.2
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

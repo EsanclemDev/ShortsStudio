@@ -10,6 +10,9 @@ export function normalizeVideo(candidate:unknown,input:DirectorInput):unknown {
  if(Array.isArray(video.scenes))video.scenes=video.scenes.map(scene=>{
   if(!obj(scene)||!Array.isArray(scene.entities))return scene;
   return {...scene,entities:scene.entities.map(entity=>{
+   if(!obj(entity))return entity;
+   // Only repair the known incompatible anatomy pulse; leave unknown values for strict validation.
+   if(entity.type==='anatomy'&&obj(entity.props)&&entity.props.animation==='pulse')entity={...entity,props:{...entity.props,animation:'static'}};
    if(!obj(entity)||!Array.isArray(entity.tracks))return entity;
    return {...entity,tracks:entity.tracks.map(track=>obj(track)&&typeof track.property==='string'&&track.property.startsWith('props.')?{...track,property:track.property.slice(6)}:track)};
   })};

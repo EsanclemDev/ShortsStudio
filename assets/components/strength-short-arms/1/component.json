@@ -1,0 +1,761 @@
+{
+  "schemaVersion": 1,
+  "id": "strength-short-arms",
+  "version": 1,
+  "name": "Press de banca: brazos cortos",
+  "description": "Press de banca: brazos cortos; modelo educativo estilizado.",
+  "category": "character",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "bench",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.78,
+          0.16,
+          2.35
+        ]
+      },
+      "position": [
+        0,
+        0.52,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "base-a",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.65,
+          0.5,
+          0.16
+        ]
+      },
+      "position": [
+        0,
+        0.25,
+        -0.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#AAB8C7",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "base-b",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.65,
+          0.5,
+          0.16
+        ]
+      },
+      "position": [
+        0,
+        0.25,
+        0.8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#AAB8C7",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "torso",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.45
+      },
+      "position": [
+        0,
+        0.81,
+        -0.15
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.85,
+        0.5,
+        1.65
+      ],
+      "material": {
+        "color": "#DC2626",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "head",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.24
+      },
+      "position": [
+        0,
+        0.82,
+        -1.02
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "hips",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.58,
+          0.31,
+          0.42
+        ]
+      },
+      "position": [
+        0,
+        0.75,
+        0.49
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-upper",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.105,
+        "radiusBottom": 0.105,
+        "height": 0.4800000000000001
+      },
+      "position": [
+        -0.5103491378189052,
+        0.7591512291281661,
+        -0.2317767120101854
+      ],
+      "rotation": [
+        2.367176021679049,
+        0,
+        0.7891973102950919
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-fore",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.085,
+        "radiusBottom": 0.085,
+        "height": 0.47999999999999976
+      },
+      "position": [
+        -0.6703491378189053,
+        0.8741512291281661,
+        -0.15677671201018545
+      ],
+      "rotation": [
+        -0.18125556165407078,
+        0,
+        -0.04313478249850636
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-elbow",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.105
+      },
+      "position": [
+        -0.6806982756378104,
+        0.6383024582563321,
+        -0.11355342402037086
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-hand",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.1
+      },
+      "position": [
+        -0.66,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-thigh",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.14,
+        "radiusBottom": 0.14,
+        "height": 0.5282045058497703
+      },
+      "position": [
+        -0.285,
+        0.7050000000000001,
+        0.8
+      ],
+      "rotation": [
+        0,
+        0,
+        2.2730532583039036
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-shin",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.1,
+        "radiusBottom": 0.1,
+        "height": 0.5503635162326805
+      },
+      "position": [
+        -0.35,
+        0.4,
+        1.165
+      ],
+      "rotation": [
+        2.710453912871011,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-shoe",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.23,
+          0.18,
+          0.42
+        ]
+      },
+      "position": [
+        -0.35,
+        0.09,
+        1.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-upper",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.105,
+        "radiusBottom": 0.105,
+        "height": 0.4800000000000001
+      },
+      "position": [
+        0.5103491378189052,
+        0.7591512291281661,
+        -0.2317767120101854
+      ],
+      "rotation": [
+        2.367176021679049,
+        0,
+        -0.7891973102950919
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-fore",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.085,
+        "radiusBottom": 0.085,
+        "height": 0.47999999999999976
+      },
+      "position": [
+        0.6703491378189053,
+        0.8741512291281661,
+        -0.15677671201018545
+      ],
+      "rotation": [
+        -0.18125556165407078,
+        0,
+        0.04313478249850636
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-elbow",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.105
+      },
+      "position": [
+        0.6806982756378104,
+        0.6383024582563321,
+        -0.11355342402037086
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-hand",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.1
+      },
+      "position": [
+        0.66,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-thigh",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.14,
+        "radiusBottom": 0.14,
+        "height": 0.5282045058497703
+      },
+      "position": [
+        0.285,
+        0.7050000000000001,
+        0.8
+      ],
+      "rotation": [
+        0,
+        0,
+        -2.2730532583039036
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-shin",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.1,
+        "radiusBottom": 0.1,
+        "height": 0.5503635162326805
+      },
+      "position": [
+        0.35,
+        0.4,
+        1.165
+      ],
+      "rotation": [
+        2.710453912871011,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#E0AC69",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-shoe",
+      "geometry": {
+        "type": "box",
+        "size": [
+          0.23,
+          0.18,
+          0.42
+        ]
+      },
+      "position": [
+        0.35,
+        0.09,
+        1.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "bar",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.045,
+        "radiusBottom": 0.045,
+        "height": 2.24
+      },
+      "position": [
+        0.0,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#AAB8C7",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-plate-0",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.27,
+        "radiusBottom": 0.27,
+        "height": 0.10000000000000009
+      },
+      "position": [
+        -0.88,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "left-plate-1",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.27,
+        "radiusBottom": 0.27,
+        "height": 0.10000000000000009
+      },
+      "position": [
+        -0.99,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-plate-0",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.27,
+        "radiusBottom": 0.27,
+        "height": 0.10000000000000009
+      },
+      "position": [
+        0.88,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "right-plate-1",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.27,
+        "radiusBottom": 0.27,
+        "height": 0.10000000000000009
+      },
+      "position": [
+        0.99,
+        1.11,
+        -0.2
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#26354B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    }
+  ]
+}

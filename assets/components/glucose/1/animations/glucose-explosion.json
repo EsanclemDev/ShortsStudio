@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 1,
+  "componentId": "glucose",
+  "componentVersion": 1,
+  "id": "glucose-explosion",
+  "duration": 6,
+  "loop": true,
+  "tracks": [
+    {
+      "partId": "c1",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.8,
+            0.2,
+            0.4
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            2,
+            0.5,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            0.8,
+            0.2,
+            0.4
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "c2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.4,
+            -0.2,
+            0.8
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            -0.5,
+            2
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            0.4,
+            -0.2,
+            0.8
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "c3",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.4,
+            0.2,
+            0.8
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -1,
+            0.5,
+            2
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -0.4,
+            0.2,
+            0.8
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "c4",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.8,
+            -0.2,
+            0.4
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -2,
+            -0.5,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -0.8,
+            -0.2,
+            0.4
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "c5",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.4,
+            0.2,
+            -0.4
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -1,
+            0.5,
+            -1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -0.4,
+            0.2,
+            -0.4
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "o5",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.4,
+            -0.2,
+            -0.4
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            -0.5,
+            -1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            0.4,
+            -0.2,
+            -0.4
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "c6",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.6,
+            0.8,
+            -0.8
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -1.5,
+            2,
+            -2
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -0.6,
+            0.8,
+            -0.8
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "o1",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1.3,
+            0.6,
+            0.6
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            3.25,
+            1.5,
+            1.5
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1.3,
+            0.6,
+            0.6
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "o2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.6,
+            -0.9,
+            1.3
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1.5,
+            -2.25,
+            3.25
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            0.6,
+            -0.9,
+            1.3
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "o3",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.6,
+            0.9,
+            1.3
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -1.5,
+            2.25,
+            3.25
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -0.6,
+            0.9,
+            1.3
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "o4",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -1.3,
+            -0.6,
+            0.6
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -3.25,
+            -1.5,
+            1.5
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -1.3,
+            -0.6,
+            0.6
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "o6",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -1.2,
+            1.3,
+            -1.2
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            -3,
+            3.25,
+            -3
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            -1.2,
+            1.3,
+            -1.2
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "b1",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "b2",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "b3",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "b4",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "b5",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "b6",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "partId": "r1",
+      "property": "rotation",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0,
+            3.14159,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 6,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "linear"
+        }
+      ]
+    }
+  ]
+}

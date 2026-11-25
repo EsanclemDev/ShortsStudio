@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 1,
+  "componentId": "gum-intestine-cutaway",
+  "componentVersion": 1,
+  "id": "peristalsis",
+  "duration": 2.2,
+  "loop": true,
+  "tracks": [
+    {
+      "partId": "wall-0-0",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.2,
+          "value": [
+            -0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.45,
+          "value": [
+            -0.43,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.7,
+          "value": [
+            -0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            -0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-0-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.2,
+          "value": [
+            0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.45,
+          "value": [
+            0.43,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.7,
+          "value": [
+            0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            0.72,
+            1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-1-0",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.45,
+          "value": [
+            -0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.7,
+          "value": [
+            -0.43,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.95,
+          "value": [
+            -0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            -0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-1-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.45,
+          "value": [
+            0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.7,
+          "value": [
+            0.43,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.95,
+          "value": [
+            0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            0.72,
+            0.93,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-2-0",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.7,
+          "value": [
+            -0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.95,
+          "value": [
+            -0.43,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.2,
+          "value": [
+            -0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            -0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-2-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.7,
+          "value": [
+            0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.95,
+          "value": [
+            0.43,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.2,
+          "value": [
+            0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            0.72,
+            0.31000000000000005,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-3-0",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.95,
+          "value": [
+            -0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.2,
+          "value": [
+            -0.43,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.45,
+          "value": [
+            -0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            -0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-3-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 0.95,
+          "value": [
+            0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.2,
+          "value": [
+            0.43,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.45,
+          "value": [
+            0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            0.72,
+            -0.30999999999999983,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-4-0",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.2,
+          "value": [
+            -0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.45,
+          "value": [
+            -0.43,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.7,
+          "value": [
+            -0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            -0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-4-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.2,
+          "value": [
+            0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.45,
+          "value": [
+            0.43,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.7,
+          "value": [
+            0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            0.72,
+            -0.9299999999999999,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-5-0",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            -0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.45,
+          "value": [
+            -0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.7,
+          "value": [
+            -0.43,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.95,
+          "value": [
+            -0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            -0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "wall-5-2",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.45,
+          "value": [
+            0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.7,
+          "value": [
+            0.43,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.95,
+          "value": [
+            0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 2.2,
+          "value": [
+            0.72,
+            -1.55,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    }
+  ]
+}

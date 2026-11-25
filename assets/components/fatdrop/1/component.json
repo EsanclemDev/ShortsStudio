@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "fatdrop",
+  "version": 1,
+  "name": "Fat Droplet",
+  "description": "Educational 3D model of a lipid droplet, representing the accumulation of fat within a cell, such as in fatty liver disease.",
+  "category": "micro",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "lipid-core-main",
+      "geometry": {
+        "type": "organic",
+        "rings": [
+          {
+            "x": -1.4,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.01,
+            "radiusZ": 0.01
+          },
+          {
+            "x": -0.8,
+            "y": 0.1,
+            "z": 0.05,
+            "radiusY": 0.75,
+            "radiusZ": 0.7
+          },
+          {
+            "x": 0.1,
+            "y": -0.1,
+            "z": -0.1,
+            "radiusY": 1.15,
+            "radiusZ": 1.1
+          },
+          {
+            "x": 0.9,
+            "y": 0.05,
+            "z": 0.1,
+            "radiusY": 0.85,
+            "radiusZ": 0.8
+          },
+          {
+            "x": 1.4,
+            "y": 0,
+            "z": 0,
+            "radiusY": 0.01,
+            "radiusZ": 0.01
+          }
+        ]
+      },
+      "material": {
+        "color": "#f7e371",
+        "roughness": 0.25,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "lipid-satellite-1",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.45
+      },
+      "material": {
+        "color": "#f7e371",
+        "roughness": 0.25,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        0.8,
+        0.8,
+        -0.4
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "lipid-satellite-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.35
+      },
+      "material": {
+        "color": "#f7e371",
+        "roughness": 0.25,
+        "metalness": 0,
+        "opacity": 1
+      },
+      "position": [
+        -0.6,
+        -0.7,
+        0.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

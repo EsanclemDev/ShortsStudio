@@ -12,6 +12,7 @@ import {
 
 type Props = {
   preset?: EnvironmentPreset;
+  clean?: boolean;
 };
 
 const vertexShader = `
@@ -55,6 +56,7 @@ const fragmentShader = `
 
 export const CinematicWorld: React.FC<Props> = ({
   preset = "studio",
+  clean = false,
 }) => {
   const config = ENVIRONMENT_PRESETS[preset];
 
@@ -81,14 +83,14 @@ export const CinematicWorld: React.FC<Props> = ({
         args={[config.background]}
       />
 
-      <fog
+      {!clean && <fog
         attach="fog"
         args={[
           config.horizon,
           config.fogNear,
           config.fogFar,
         ]}
-      />
+      />}
 
       {/* Atmospheric background */}
       <mesh scale={60}>
@@ -103,7 +105,7 @@ export const CinematicWorld: React.FC<Props> = ({
         />
       </mesh>
 
-      {preset === "gym" ? <GymEnvironment /> : <EnvironmentFloor preset={preset} />}
+      {!clean && (preset === "gym" ? <GymEnvironment /> : <EnvironmentFloor preset={preset} />)}
     </>
   );
 };

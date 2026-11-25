@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "id": "strength-neuron",
+  "version": 1,
+  "name": "Neurona motora",
+  "description": "Neurona motora; modelo educativo estilizado.",
+  "category": "micro",
+  "dimension": "3d",
+  "parts": [
+    {
+      "id": "soma",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.32
+      },
+      "position": [
+        -1.1,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#F59E0B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "nucleus",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.13
+      },
+      "position": [
+        -1.1,
+        0,
+        0.24
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#FDE68A",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "axon",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.075,
+        "radiusBottom": 0.075,
+        "height": 1.9000000000000001
+      },
+      "position": [
+        0.15000000000000002,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#F59E0B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "myelin-0",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.13
+      },
+      "position": [
+        -0.65,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.15,
+        0.8,
+        0.8
+      ],
+      "material": {
+        "color": "#E5E7EB",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "myelin-1",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.13
+      },
+      "position": [
+        -0.33,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.15,
+        0.8,
+        0.8
+      ],
+      "material": {
+        "color": "#E5E7EB",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "myelin-2",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.13
+      },
+      "position": [
+        -0.010000000000000009,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.15,
+        0.8,
+        0.8
+      ],
+      "material": {
+        "color": "#E5E7EB",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "myelin-3",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.13
+      },
+      "position": [
+        0.30999999999999994,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.15,
+        0.8,
+        0.8
+      ],
+      "material": {
+        "color": "#E5E7EB",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "myelin-4",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.13
+      },
+      "position": [
+        0.63,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.15,
+        0.8,
+        0.8
+      ],
+      "material": {
+        "color": "#E5E7EB",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "branch-0",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.04,
+        "radiusBottom": 0.04,
+        "height": 0.6074742792909014
+      },
+      "position": [
+        1.35,
+        -0.17250000000000001,
+        0.0
+      ],
+      "rotation": [
+        0,
+        0,
+        -2.1747793050478945
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#F59E0B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "branch-1",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.04,
+        "radiusBottom": 0.04,
+        "height": 0.5130545779934138
+      },
+      "position": [
+        1.35,
+        -0.0575,
+        0.0
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.7968647147887806
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#F59E0B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "branch-2",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.04,
+        "radiusBottom": 0.04,
+        "height": 0.5130545779934138
+      },
+      "position": [
+        1.35,
+        0.0575,
+        0.0
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.3447279388010127
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#F59E0B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "branch-3",
+      "geometry": {
+        "type": "cylinder",
+        "radiusTop": 0.04,
+        "radiusBottom": 0.04,
+        "height": 0.6074742792909014
+      },
+      "position": [
+        1.35,
+        0.17250000000000001,
+        0.0
+      ],
+      "rotation": [
+        0,
+        0,
+        -0.9668133485418987
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#F59E0B",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    },
+    {
+      "id": "signal",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.11
+      },
+      "position": [
+        -0.8,
+        0,
+        0.14
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "material": {
+        "color": "#22D3EE",
+        "roughness": 0.65,
+        "metalness": 0,
+        "opacity": 1
+      }
+    }
+  ]
+}

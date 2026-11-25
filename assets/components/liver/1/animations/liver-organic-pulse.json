@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "componentId": "liver",
+  "componentVersion": 1,
+  "id": "liver-organic-pulse",
+  "duration": 3,
+  "loop": true,
+  "tracks": [
+    {
+      "partId": "liver-body",
+      "property": "position",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.5,
+          "value": [
+            0,
+            0.01,
+            0
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            0,
+            0,
+            0
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "liver-body",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.5,
+          "value": [
+            1.03,
+            1.01,
+            1.03
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "gallbladder",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.5,
+          "value": [
+            1.02,
+            1.02,
+            1.02
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "portal-vein",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.5,
+          "value": [
+            1.04,
+            1.04,
+            1.04
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "hepatic-artery",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.5,
+          "value": [
+            1.04,
+            1.04,
+            1.04
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    },
+    {
+      "partId": "inferior-vena-cava",
+      "property": "scale",
+      "keyframes": [
+        {
+          "time": 0,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 1.5,
+          "value": [
+            1.03,
+            1.03,
+            1.03
+          ],
+          "easing": "easeInOut"
+        },
+        {
+          "time": 3,
+          "value": [
+            1,
+            1,
+            1
+          ],
+          "easing": "easeInOut"
+        }
+      ]
+    }
+  ]
+}

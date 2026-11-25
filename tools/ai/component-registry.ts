@@ -1,0 +1,3 @@
+import {ComponentRegistry,readRegistryJson} from '../../src/engine/components/ComponentRegistry';
+async function main(){const [cmd,file,id,version]=process.argv.slice(2);const r=new ComponentRegistry();if(cmd==='list'){console.log(JSON.stringify(await r.list(),null,2));return;}if(cmd==='add'&&file){const c=await r.registerComponent(await readRegistryJson(file));console.log('Registered',c.id,c.version);return;}if(cmd==='add-animation'&&file&&id&&version){const a=await r.registerAnimation(await readRegistryJson(file),id,Number(version));console.log('Registered animation',a.id);return;}throw new Error('Usage: component-registry list | add component.json | add-animation animation.json componentId version');}
+void main().catch(e=>{console.error(e);process.exitCode=1;});
