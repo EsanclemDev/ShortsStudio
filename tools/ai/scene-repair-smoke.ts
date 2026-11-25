@@ -1,0 +1,7 @@
+import {repairQuality} from '../../src/engine/ai/services/QualityPatchEngine';
+import {validateDirectorResponse,type VisualDirectorInput} from '../../src/engine/ai/services/VisualDirector';
+const input:VisualDirectorInput={id:'test',title:'Test',narration:'Test',duration:4,fps:30,width:1080,height:1920,voiceSrc:'audio/test.mp3',captionsSrc:'audio/test.json',captions:[{text:'Test',startMs:0,endMs:1000}]};
+const scenes=['a','b'].map((id,i)=>({id,start:i*2,end:i*2+2,environment:'studio',entities:[{id:'glass',type:'object',props:{type:'waterGlass'}}]}));
+const video=validateDirectorResponse(JSON.stringify({scenes}),input);
+async function main(){let calls=0;const done:string[]=[];const result=await repairQuality({async generate(){calls++;if(calls===1||calls>=3)throw new Error('AI response truncated');return JSON.stringify({replacements:[{sceneId:'a',scene:{...scenes[0],entities:[{id:'glass',type:'object',props:{type:'waterGlass',animation:'static'}}]}}]});}},input,video,{issues:scenes.map(s=>({sceneId:s.id,severity:'major',problem:'test',suggestion:'test'})),summary:'test'},undefined,{onScene:id=>{done.push(id);}});if(calls!==4||done.join()!=='a'||result.scenes[0]?.entities[0]?.props.animation!=='static'||JSON.stringify(result.scenes[1])!==JSON.stringify(video.scenes[1]))throw new Error('Scene recovery failed');console.log('Scene repair smoke test OK');}
+void main().catch(e=>{console.error(e);process.exitCode=1;});

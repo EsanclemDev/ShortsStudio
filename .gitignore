@@ -10,3 +10,12 @@ out
 .venv/
 __pycache__/
 *.pyc
+# AI development artifacts
+/ai-director-contracts.txt
+/engine-contracts.txt
+/multimedia-contracts.txt
+/public/audio/director/003-sugar/
+/public/audio/director/reference-squat/
+/src/shorts-engine/
+.env.*
+!.env.example
